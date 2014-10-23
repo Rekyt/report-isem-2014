@@ -28,8 +28,13 @@ Using LANDE 2009 (REF NEEDED), under weak selection we have:
 	\Delta\overline{z} = \frac{d\log\overline{\lambda}(\overline{z})}{d\overline{z}} = \frac{1}{\overline{\lambda}(\overline{z})} \frac{d\overline{\lambda}(\overline{z})}{d\overline{z}}
 \end{equation}
 
-Or we have
+And we have:
 \begin{align}
-	\overline{\lambda}(\overline{z}) &= \sum_{i,j}{v_{i} u_{j} \overline{a_{ij}}}\\
+	\overline{\lambda}(\overline{z}) &= \sum_{i,j}{v_{i} u_{j} \overline{a_{ij}}} \nonumber \\
 	&= v_{I} u_{I} \overline{a_{II}} + v_{I} u_{M} \overline{a_{IM}} + v_{M} u_{I} \overline{a_{MI}} + v_{M} u_{M} \overline{a_{MM}}
 \end{align}
+
+with $\overline{a_{ij}}$ the expected values of the coefficent of the transition matrix. Thus,
+\begin{equation}
+	\overline{\lambda}(\overline{z}) = v_{I} u_{I} \left[ \overline{f_{1}}(\overline{z})m s_{0} + (1-m)\overline{s_{I}}(\overline(z)) \right] + v_{I} u_{M} s_0 \overline{f_{2}}(\overline{z})+ v_{M} u_{I} m s_M + v_{M} u_{M} s_M
+\end{equation}
