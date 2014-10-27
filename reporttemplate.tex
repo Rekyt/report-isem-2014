@@ -1,8 +1,11 @@
-\documentclass[12pt]{article}
+\documentclass[a4paper, 12pt]{article}
+
 \usepackage{fontspec}
 \usepackage{mathtools}
-\usepackage[margin=1.5cm]{geometry}
+\usepackage[margin=2cm]{geometry}
 \setmainfont{Times New Roman}
+
+\usepackage{natbib}
 \begin{document}
 
 \input{0-Summary.tex}
@@ -18,4 +21,7 @@
 \input{5-AuthorsContributions.tex}
 
 \input{6-References.tex}
+\citep{barfield_evolution_2011}
+\bibliographystyle{cell.bst}
+\bibliography{Bibliography}
 \end{document}
