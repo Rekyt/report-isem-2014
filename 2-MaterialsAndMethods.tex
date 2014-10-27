@@ -81,9 +81,16 @@ Within the square brackets, we see weighting average of fecundity and survival. 
 
 We end up having a simpler expression for $\Delta\overline{z}$ under constant environment:
 
-\begin{equation}
-	\Delta\overline{z} = -G_{I} \left[ \gamma_{f}(\overline{z} - \theta_{f}) + \gamma_{s}(\overline{z} - \theta_{s}) \right]
-\end{equation}
+\begin{align}
+	\Delta\overline{z} &= -G_{I} \left[ \gamma_{f}(\overline{z} - \theta_{f}) + \gamma_{s}(\overline{z} - \theta_{s}) \right] \nonumber \\
+	\Delta\overline{z} &= - G_{I} \gamma(\overline{z} - \theta_{v})
+\end{align}
+
+with
+\begin{align}
+	\gamma &= \gamma_{f} + \gamma_{s} \\
+	\theta_{v} &= \frac{\frac{\gamma_{f}}{\gamma_{s}}\theta_{f} + \theta_{s}}{\frac{\gamma_{f}}{\gamma_{s}} + 1}
+\end{align}
 
 \subsection*{Under varying environment}
 From \citet{engen_evolution_2011}, we derived equations for mean variation of phenotype on our model.
@@ -96,7 +103,9 @@ We supposed an auto-correlated fluctuating environment $\epsilon_{t}$ influencin
 		\epsilon_{t+1} &= (1-\rho)\overline{\epsilon} + \rho\epsilon_{t} + \xi
 	\end{aligned}
 \right.
-\end{align} with $alpha_{i}$ the dependence factor of the optimum on the environment, $\rho$ the auto-correlation coefficient of the environment, $\overline{\epsilon}$ the expected environment and $\xi$ a gaussian noise vector with variance $\sigma^{2}_{\xi}$ and mean $0$. We chose $\overline{\epsilon}=0$ to simplify the calculations so that $\epsilon_{t+1} = \rho\epsilon_{t} + \xi$, then:
+\end{align}
+with $\alpha_{i}$ the dependence factor of the optimum on the environment, $\rho$ the auto-correlation coefficient of the environment, $\overline{\epsilon}$ the expected environment and $\xi$ a gaussian noise vector with variance $\sigma^{2}_{\xi}$ and mean $0$. We chose $\overline{\epsilon}=0$ to simplify the calculations so that $\epsilon_{t+1} = \rho\epsilon_{t} + \xi$, then:
+
 \begin{align}
 	\theta_{i}(t+1) &= \overline{\theta}_{i} + \alpha_{i}\epsilon_{t+1} \nonumber \\
 	&= \overline{\theta}_{i} + \alpha_{i}(\rho\epsilon_{t} + \xi) \nonumber \\
