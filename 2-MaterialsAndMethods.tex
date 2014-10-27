@@ -88,5 +88,19 @@ We end up having a simpler expression for $\Delta\overline{z}$ under constant en
 \subsection*{Under varying environment}
 From \citet{engen_evolution_2011}, we derived equations for mean variation of phenotype on our model.
 
-We supposed an auto-correlated fluctuating environment influencing optimum such as $\theta_{f} = \overline{\theta}_{f} + \alpha_{f}\epsilon_{t}$. With $\epsilon_{t+1} = (1-\rho)\overline{\epsilon} + \rho\epsilon_{t} + \xi$ with $\xi$ a gaussian noise vector with variance $\sigma^{2}_{\xi}$ and mean $0$.
+We supposed an auto-correlated fluctuating environment $\epsilon_{t}$ influencing optimums $\theta_{i}$ such as:
+\begin{align}
+\left\{
+	\begin{aligned}
+		\theta_{i}(t) &= \overline{\theta}_{i} + \alpha_{i}\epsilon_{t}\\
+		\epsilon_{t+1} &= (1-\rho)\overline{\epsilon} + \rho\epsilon_{t} + \xi
+	\end{aligned}
+\right.
+\end{align} with $alpha_{i}$ the dependence factor of the optimum on the environment, $\rho$ the auto-correlation coefficient of the environment, $\overline{\epsilon}$ the expected environment and $\xi$ a gaussian noise vector with variance $\sigma^{2}_{\xi}$ and mean $0$. We chose $\overline{\epsilon}=0$ to simplify the calculations so that $\epsilon_{t+1} = \rho\epsilon_{t} + \xi$, then:
+\begin{align}
+	\theta_{i}(t+1) &= \overline{\theta}_{i} + \alpha_{i}\epsilon_{t+1} \nonumber \\
+	&= \overline{\theta}_{i} + \alpha_{i}(\rho\epsilon_{t} + \xi) \nonumber \\
+	&= \overline{\theta}_{i} + \alpha_{i}\rho(\frac{\theta_{i}(t)-\overline{\theta}_{i}}{\alpha_{i}}) + \alpha_{i}\xi \nonumber \\
+	\theta_{i}(t+1) &= \overline{\theta}_{i}(1-\rho) + \rho\theta_{i}(t) + \alpha_{i}\xi
+\end{align}
 
