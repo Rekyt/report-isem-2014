@@ -7,28 +7,35 @@ From \citet{engen_evolution_2011}, we derived equations for mean variation of ph
 We have for variations of phenotype, under weak selection:
 \begin{equation}
 	\label{eq:deltaz}
-	\Delta\overline{z} = (\theta_{f} - \overline{z}) \left[ \frac{ v_{I} u_{I} G_{I} s_{0} m \overline{f}_{1} }{\lambda(P_{I}+\omega_{f})} + \frac{ v_{I} u_{M} G_{M} s_{0} \overline{f}_{2}} {\lambda ( P_{M} + \omega_{f} )} \right] + (\theta_{s} - \overline{z}) \left[ \frac{ v_{I} u_{I} G_{I} \overline{s}_{I} (1-m) }{\lambda(P_{I}+\omega_{s})} \right]
+	\Delta\overline{z} = 
+		(\theta_{f} - \overline{z})
+		\left[ \frac{ v_{I} u_{I} G_{I} s_{0} m \overline{f_{1}} }{ \lambda (P_{I}+\omega_{f}) }
+			+ \frac{ v_{I} u_{M} G_{M} s_{0} \overline{f_{2}} }{ \lambda (P_{M} + \omega_{f}) }
+		\right]
+		+ (\theta_{s} - \overline{z})
+		\left[ \frac{ v_{I} u_{I} G_{I} \overline{s_{I}} (1-m) }{ \lambda (P_{I}+\omega_{s}) }
+		\right]
 \end{equation}
 
 Within the square brackets, we see weighting average of fecundity and survival. Thus, we define them as $\gamma_{f}$ and $\gamma_{s}$ such as:
 
 \begin{subequations}
-	\begin{align}
+	\begin{equation}
 	\label{eq:gammaf}
-	\gamma_{f} = \frac{ v_{I} u_{I} G_{I} s_{0} m \overline{f}_{1} }{\lambda(P_{I}+\omega_{f})} + \frac{ v_{I} u_{M} G_{M} s_{0} \overline{f}_{2}} {\lambda ( P_{M} + \omega_{f} )}
-	\end{align}
+	\gamma_{f} = \frac{v_{I} u_{I} G_{I} s_{0} m \overline{f_{1}} }{\lambda(P_{I}+\omega_{f})} + \frac{ v_{I} u_{M} G_{M} s_{0} \overline{f_{2}}}{\lambda ( P_{M} + \omega_{f} )}
+	\end{equation}
 	and
-	\begin{align}
+	\begin{equation}
 	\label{eq:gammas}
-	\gamma_{s} = \frac{ v_{I} u_{I} G_{I} \overline{s}_{I} (1-m) }{\lambda(P_{I}+\omega_{s})}
-	\end{align}
+	\gamma_{s} = \frac{ v_{I} u_{I} G_{I} \overline{s_{I}} (1-m) }{\lambda(P_{I}+\omega_{s})}
+	\end{equation}
 \end{subequations}
 
 We supposed an auto-correlated fluctuating environment influencing optimum such as $\theta_{f} = \overline{\theta}_{f} + \alpha_{f}\epsilon_{t}$. With $\epsilon_{t+1} = (1-\rho)\overline{\epsilon} + \rho\epsilon_{t} + \xi$ with $\xi$ a gaussian noise vector with variance $\sigma^{2}_{\xi}$ and mean $0$.
 
 Using \citet{lande_adaptation_2009}, under weak selection we have:
 \begin{equation}
-	\label{eq:dlambda}
+	\label{eq:dz}
 	\Delta\overline{z} = \frac{d\ln\overline{\lambda}(\overline{z})}{d\overline{z}} = \frac{1}{\overline{\lambda}(\overline{z})} \frac{d\overline{\lambda}(\overline{z})}{d\overline{z}}
 \end{equation}
 
@@ -40,9 +47,30 @@ And we have:
 
 With $\overline{a_{ij}}$ the expected values of the coefficent of the transition matrix. Thus,
 \begin{align}
-	\label{eq:lambda}
-	\overline{\lambda}(\overline{z}) &= v_{I} u_{I} \left[ \overline{f_{1}}(\overline{z}) m s_{0} + (1-m) \overline{s_{I}}(\overline{z}) \right] \nonumber \\
-	&\quad + v_{I} u_{M} s_{0} \overline{f_{2}}(\overline{z}) + v_{M} u_{I} m s_{M} + v_{M} u_{M} s_M \\
-	\frac{d\overline{\lambda}(\overline{z})}{d\overline{z}} &= v_{I} u_{I} \left[ \frac{d\overline{f_{1}}(\overline{z})}{d\overline{z}} m s_{0} + (1-m) \frac{d\overline{s_{I}}(\overline{z})}{d\overline{z}} \right] \nonumber \\
-	&\quad + v_{I} u_{M} s_{0} \frac{d\overline{f_{2}}(\overline{z})}{d\overline{z}}
+	\overline{\lambda}(\overline{z}) &= v_{I} u_{I} \left[ \overline{f_{1}}(\overline{z}) m s_{0} + (1-m) \overline{s_{I}}(\overline{z}) \right] + v_{I} u_{M} s_{0} \overline{f_{2}}(\overline{z}) \nonumber \\
+	&\quad + v_{M} u_{I} m s_{M} + v_{M} u_{M} s_M \\
+	\label{eq:dlambda}
+	\frac{d\overline{\lambda}(\overline{z})}{d\overline{z}} &= v_{I} u_{I} \left[ \frac{d\overline{f_{1}}(\overline{z})}{d\overline{z}} m s_{0} + (1-m) \frac{d\overline{s_{I}}(\overline{z})}{d\overline{z}} \right] + v_{I} u_{M} s_{0} \frac{d\overline{f_{2}}(\overline{z})}{d\overline{z}}
 \end{align}
+
+Because $f_{i}$ and $s_{I}$ are gaussians we can write the population means $\overline{f_{i}}$ and $\overline{s_{I}}$ easily.
+
+\begin{subequations}
+	\begin{align}
+	\label{eq:meanf}
+		\overline{f_{1}}(\overline{z}) &= f_{1}(\theta_{f}) \sqrt{\frac{\omega_{f}}{\omega_{f} + P_{I}}} \exp\left(-\frac{(\overline{z_{I}}-\theta_{f})^2}{2(\omega_{f}+P_{I})}\right) \\
+		\overline{f_{2}}(\overline{z}) &= f_{2}(\theta_{f}) \sqrt{\frac{\omega_{f}}{\omega_{f} + P_{M}}} \exp\left(-\frac{(\overline{z_{M}}-\theta_{f})^2}{2(\omega_{f}+P_{M})}\right) \\
+		\overline{s_{I}}(\overline{z}) &= s_{I}(\theta_{s}) \sqrt{\frac{\omega_{s}}{\omega_{s} + P_{I}}} \exp\left(-\frac{(\overline{z_{I}}-\theta_{s})^2}{2(\omega_{s}+P_{I})}\right)
+	\end{align}
+\end{subequations}
+
+Thus we can derive these expression with respect to $\overline{z}$:
+
+\begin{align}
+	\label{eq:dfdz}
+	\frac{\partial \overline{f_{1}}(\overline{z}) }{ \partial \overline{z} } &= f_{1}(\theta_{f}) \sqrt{\frac{\omega_{f}}{\omega_{f} + P_{I}}} \frac{\partial \exp \left(-\frac{(\overline{z_{I}}-\theta_{f})^2}{2(\omega_{f}+P_{I})}\right)}{\partial\overline{z}} \nonumber \\
+	&= f_{1}(\theta_{f}) \sqrt{ \frac{\omega_{f}}{ \omega_{f} + P_{I}}}\exp\left(-\frac{(\overline{z_{I}}-\theta_{f})^2}{2(\omega_{f}+P_{I})}\right) \frac{\theta_{f} - \overline{z_{I}}}{\omega_{f} + P_{I}} \nonumber \\
+	&= \overline{f_{1}}(\overline{z}) \frac{\theta_{f} - \overline{z_{I}}}{\omega_{f} + P_{I}}
+\end{align}
+
+We obtain similar formulas for $\overline{f_{2}}$ and $\overline{s_{I}}$. Plugging \eqref{eq:dfdz} into \eqref{eq:dlambda}
