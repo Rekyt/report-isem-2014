@@ -97,6 +97,7 @@ From \citet{engen_evolution_2011}, we derived equations for mean variation of ph
 
 We supposed an auto-correlated fluctuating environment $\epsilon_{t}$ influencing optimums $\theta_{i}$ such as:
 \begin{align}
+	\label{eq:epstheta}
 \left\{
 	\begin{aligned}
 		\theta_{i}(t) &= \overline{\theta}_{i} + \alpha_{i}\epsilon_{t}\\
@@ -110,6 +111,45 @@ with $\alpha_{i}$ the dependence factor of the optimum on the environment, $\rho
 	\theta_{i}(t+1) &= \overline{\theta}_{i} + \alpha_{i}\epsilon_{t+1} \nonumber \\
 	&= \overline{\theta}_{i} + \alpha_{i}(\rho\epsilon_{t} + \xi) \nonumber \\
 	&= \overline{\theta}_{i} + \alpha_{i}\rho(\frac{\theta_{i}(t)-\overline{\theta}_{i}}{\alpha_{i}}) + \alpha_{i}\xi \nonumber \\
+	\label{eq:thetait}
 	\theta_{i}(t+1) &= \overline{\theta}_{i}(1-\rho) + \rho\theta_{i}(t) + \alpha_{i}\xi
 \end{align}
 
+Using the same approach as in a constant environment, under weak selection, we end up having a similar equation than \eqref{eq:cstdeltaz} but with optimum depending on environment:
+
+\begin{equation}
+	\label{eq:deltazt}
+	\Delta\overline{z}_{t} = 
+		(\theta_{f}(t) - \overline{z}_{t})
+		\left[ \frac{ v_{I} u_{I} G_{I} s_{0} m \overline{f_{1}} }{ \lambda_{t} (P_{I}+\omega_{f}) }
+			+ \frac{ v_{I} u_{M} G_{M} s_{0} \overline{f_{2}} }{ \lambda_{t} (P_{M} + \omega_{f}) }
+		\right]
+		+ (\theta_{s}(t) - \overline{z}_{t})
+		\left[ \frac{ v_{I} u_{I} G_{I} \overline{s_{I}} (1-m) }{ \lambda_{t} (P_{I}+\omega_{s}) }
+		\right]
+\end{equation}
+
+Plugging \eqref{eq:epstheta} in \eqref{eq:deltazt} we obtain
+
+\begin{subequations}
+	\begin{align}
+		\Delta\overline{z}_{t} &= 
+			(\overline{\theta}_{f} + \alpha_{f}\epsilon_{t} - \overline{z}_{t})
+			\left[ \frac{ v_{I} u_{I} G_{I} s_{0} m \overline{f_{1}} }{ \lambda_{t} (P_{I}+\omega_{f}) }
+				+ \frac{ v_{I} u_{M} G_{M} s_{0} \overline{f_{2}} }{ \lambda_{t} (P_{M} + \omega_{f}) }
+			\right]
+			+ (\overline{\theta}_{s} + \alpha_{s}\epsilon_{t} - \overline{z}_{t})
+			\left[ \frac{ v_{I} u_{I} G_{I} \overline{s_{I}} (1-m) }{ \lambda_{t} (P_{I}+\omega_{s}) }
+			\right] \nonumber \\
+	\end{align}
+	Defining the same $\gamma_{f}$ and $\gamma_{s}$ as in \eqref{eq:gammaf} and \eqref{eq:gammas}:
+	\begin{align}
+			\Delta\overline{z}_{t} &= G_{I} \left[(\overline{\theta}_{f} + \alpha_{f}\epsilon_{t} - \overline{z}_{t})
+			\gamma_{f}
+			+ (\overline{\theta}_{s} + \alpha_{s}\epsilon_{t} - \overline{z}_{t})
+			\gamma_{s} \right] \nonumber \\
+			&= - G_{I} \left[ \gamma_{f}(\overline{z} - \theta_{f}) + \gamma_{s}(\overline{z} - \theta_{s}) \right] -G_{I} \epsilon_{t} \left( \gamma_{f}\alpha_{f} + \gamma_{s}\alpha_{s} \right) \nonumber \\
+			&= \Delta\overline{z} -G_{I} \epsilon_{t} \left( \gamma_{f}\alpha_{f} + \gamma_{s}\alpha_{s} \right)
+	\end{align}
+	
+\end{subequations}
