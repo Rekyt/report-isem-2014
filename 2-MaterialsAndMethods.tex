@@ -88,7 +88,9 @@ We end up having a simpler expression for $\Delta\overline{z}$ under constant en
 
 with
 \begin{align}
+	\label{eq:gamma}
 	\gamma &= \gamma_{f} + \gamma_{s} \\
+	\label{eq:thetav}
 	\theta_{v} &= \frac{\frac{\gamma_{f}}{\gamma_{s}}\theta_{f} + \theta_{s}}{\frac{\gamma_{f}}{\gamma_{s}} + 1}
 \end{align}
 
@@ -120,11 +122,11 @@ Using the same approach as in a constant environment, under weak selection, we e
 \begin{equation}
 	\label{eq:deltazt}
 	\Delta\overline{z}_{t} = 
-		(\theta_{f}(t) - \overline{z}_{t})
+		(\theta_{f}(t) - \overline{z})
 		\left[ \frac{ v_{I} u_{I} G_{I} s_{0} m \overline{f_{1}} }{ \lambda_{t} (P_{I}+\omega_{f}) }
 			+ \frac{ v_{I} u_{M} G_{M} s_{0} \overline{f_{2}} }{ \lambda_{t} (P_{M} + \omega_{f}) }
 		\right]
-		+ (\theta_{s}(t) - \overline{z}_{t})
+		+ (\theta_{s}(t) - \overline{z})
 		\left[ \frac{ v_{I} u_{I} G_{I} \overline{s_{I}} (1-m) }{ \lambda_{t} (P_{I}+\omega_{s}) }
 		\right]
 \end{equation}
@@ -134,22 +136,32 @@ Plugging \eqref{eq:epstheta} in \eqref{eq:deltazt} we obtain
 \begin{subequations}
 	\begin{align}
 		\Delta\overline{z}_{t} &= 
-			(\overline{\theta}_{f} + \alpha_{f}\epsilon_{t} - \overline{z}_{t})
+			(\overline{\theta}_{f} + \alpha_{f}\epsilon_{t} - \overline{z})
 			\left[ \frac{ v_{I} u_{I} G_{I} s_{0} m \overline{f_{1}} }{ \lambda_{t} (P_{I}+\omega_{f}) }
 				+ \frac{ v_{I} u_{M} G_{M} s_{0} \overline{f_{2}} }{ \lambda_{t} (P_{M} + \omega_{f}) }
 			\right]
-			+ (\overline{\theta}_{s} + \alpha_{s}\epsilon_{t} - \overline{z}_{t})
+			+ (\overline{\theta}_{s} + \alpha_{s}\epsilon_{t} - \overline{z})
 			\left[ \frac{ v_{I} u_{I} G_{I} \overline{s_{I}} (1-m) }{ \lambda_{t} (P_{I}+\omega_{s}) }
 			\right] \nonumber \\
 	\end{align}
 	Defining the same $\gamma_{f}$ and $\gamma_{s}$ as in \eqref{eq:gammaf} and \eqref{eq:gammas}:
 	\begin{align}
-			\Delta\overline{z}_{t} &= G_{I} \left[(\overline{\theta}_{f} + \alpha_{f}\epsilon_{t} - \overline{z}_{t})
+			\Delta\overline{z}_{t} &= G_{I} \left[(\overline{\theta}_{f} + \alpha_{f}\epsilon_{t} - \overline{z})
 			\gamma_{f}
-			+ (\overline{\theta}_{s} + \alpha_{s}\epsilon_{t} - \overline{z}_{t})
+			+ (\overline{\theta}_{s} + \alpha_{s}\epsilon_{t} - \overline{z})
 			\gamma_{s} \right] \nonumber \\
 			&= - G_{I} \left[ \gamma_{f}(\overline{z} - \theta_{f}) + \gamma_{s}(\overline{z} - \theta_{s}) \right] -G_{I} \epsilon_{t} \left( \gamma_{f}\alpha_{f} + \gamma_{s}\alpha_{s} \right) \nonumber \\
-			&= \Delta\overline{z} -G_{I} \epsilon_{t} \left( \gamma_{f}\alpha_{f} + \gamma_{s}\alpha_{s} \right)
+			\label{eq:deltaztdeltaz}
+			\Delta\overline{z}_{t} &= \Delta\overline{z} + G_{I} \epsilon_{t} \left( \gamma_{f}\alpha_{f} + \gamma_{s}\alpha_{s} \right) \\
+			&= -G_{I}\gamma(\overline{z} - \theta_{v})  + G_{I} \epsilon_{t} \left( \gamma_{f}\alpha_{f} + \gamma_{s}\alpha_{s} \right) \nonumber \\
+			&= -G_{I}\gamma \left(\overline{z} - \theta_{v} - \epsilon_{t} \frac{\gamma_{f}\alpha_{f}+\gamma_{s}\alpha_{s}}{\gamma} \right) \nonumber \\
+			\label{eq:totaldeltazt}
+			\Delta\overline{z}_{t} &= -G_{I}\gamma (\overline{z} - \theta_{v} - \alpha_{v}\epsilon_{t})
 	\end{align}
-	
 \end{subequations}
+With $\alpha_{v}$ a weighted component between $\alpha_{f}$ and $\alpha_{s}$, defined in similar fashion as $\theta_{v}$ in \eqref{eq:thetav}:
+\begin{align}
+	\alpha_{v} &= \frac{\gamma_{f}\alpha_{f}+\gamma_{s}\alpha_{s}}{\gamma} \nonumber \\
+	&= \frac{ \gamma_{f}\alpha_{f}+\gamma_{s}\alpha_{s} }{\gamma_{f}+\gamma_{s}} \nonumber \\
+	\alpha_{v} &=\frac{\frac{\gamma_{f}}{\gamma_{s}}\alpha_{f}+\alpha_{s}}{ \frac{\gamma_{f}}{\gamma_{s}} + 1}
+\end{align}
