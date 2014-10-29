@@ -165,3 +165,25 @@ With $\alpha_{v}$ a weighted component between $\alpha_{f}$ and $\alpha_{s}$, de
 	&= \frac{ \gamma_{f}\alpha_{f}+\gamma_{s}\alpha_{s} }{\gamma_{f}+\gamma_{s}} \nonumber \\
 	\alpha_{v} &=\frac{\frac{\gamma_{f}}{\gamma_{s}}\alpha_{f}+\alpha_{s}}{ \frac{\gamma_{f}}{\gamma_{s}} + 1}
 \end{align}
+
+\subsubsection*{Estimating variance of $\overline{z}_{t}$}
+
+Taking \eqref{eq:totaldeltazt} we can estimate variance of $\overline{z}_{t}$. Using the same process as \citet{engen_evolution_2011}. Indeed, \eqref{eq:totaldeltazt} has the form:
+\begin{equation}
+	\label{eq:defdeltaat}
+	\Delta A_{t}=-D A_{t} + e_{t}
+\end{equation}
+ with $A_{t}=\overline{z} - \theta_{v}$, $D = G_{I} \gamma$ and $e_{t} = D\alpha_{v}\epsilon_{t}$. \eqref{eq:defdeltaat} has a stationary solution:
+
+\begin{subequations}
+	\begin{equation}
+		\label{at+1}
+		A_{t+1} = (1-D)^{t+1} A_{0} + \sum_{r=0}^{t} (1-D)^{r} e_{t-r}
+	\end{equation}
+	
+	If we consider the evolution of $A_{t}$ over a long time, \eqref{at+1} becomes, because $(1-D) \inf 1$:
+	
+	\begin{equation}
+		A_{t} = \sum_{r=0}^{\infty}e_{t-r}(1-D)^{r}
+	\end{equation}
+\end{subequations}
