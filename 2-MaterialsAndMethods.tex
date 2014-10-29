@@ -183,7 +183,19 @@ Taking \eqref{eq:totaldeltazt} we can estimate variance of $\overline{z}_{t}$. U
 	
 	If we consider the evolution of $A_{t}$ over a long time, \eqref{at+1} becomes, because $(1-D) \inf 1$:
 	
-	\begin{equation}
+	\begin{align}
+		\label{atsum}
 		A_{t} = \sum_{r=0}^{\infty}e_{t-r}(1-D)^{r}
-	\end{equation}
+	\end{align}
 \end{subequations}
+
+We want to estimate how will $\overline{z}_{t}$ move away from the mean because of environmental fluctuations, that is why we compute its variance. From \eqref{at+1}:
+\begin{align}
+	\text{Var}(A_{t}) &= \text{Var} \left[ \sum_{r=0}^{\infty}e_{t-r}(1-D)^{r} \right] \nonumber \\
+	&= \sum_{r=0}^{\infty} \text{Var} \left[ e_{t-r}(1-D)^{r} \right] \nonumber \\
+	&=  \sum_{r=0}^{\infty} \text{Var} \left[ \epsilon_{t-r} D \alpha_{v} (1-D)^{r} \right] \nonumber \\
+	&\overset{\text{def}}{=} \sigma_{\epsilon}^{2} D^{2} \alpha_{v}^{2} \sum_{r=0}^{\infty} (1-D)^{2r} \nonumber \\
+	\text{Var}(A_{t}) &= \sigma_{\epsilon}^{2} D^{2} \alpha_{v}^{2} \frac{1}{1-(1-D)^{2}} \nonumber \\
+	\text{Var}(\overline{z}) &\overset{\text{def}}{=} \sigma_{\epsilon}^{2} G_{I}^{2}\gamma^{2} \alpha_{v}^{2} \frac{1}{G_{I}\gamma(2-G_{I}\gamma)} \nonumber \\
+	\text{Var}(\overline{z}) &\overset{\gamma \to 0}{=} \frac{1}{2} G_{I}\gamma\sigma_{\epsilon}^{2}\alpha_{v}^{2}
+\end{align}
