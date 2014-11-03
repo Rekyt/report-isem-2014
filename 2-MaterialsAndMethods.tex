@@ -107,7 +107,7 @@ We supposed an auto-correlated fluctuating environment $\epsilon_{t}$ influencin
 	\end{aligned}
 \right.
 \end{align}
-with $\alpha_{i}$ the dependence factor of the optimum on the environment, $\rho$ the auto-correlation coefficient of the environment, $\overline{\epsilon}$ the expected environment and $\xi$ a gaussian noise vector with variance $\sigma^{2}_{\xi}$ and mean $0$. We chose $\overline{\epsilon}=0$ to simplify the calculations so that $\epsilon_{t+1} = \rho\epsilon_{t} + \xi$, then:
+with $\alpha_{i}$ the dependence factor of the optimum on the environment, $\rho$ the auto-correlation coefficient of the environment, $\overline{\epsilon}$ the expected environment and $\xi$ a gaussian noise vector with variance $\sigma^{2}_{\xi}$ and mean $0$. We chose $\overline{\epsilon}=0$ to simplify the calculations so that $\epsilon_{t+1} = \rho\epsilon_{t} + \xi$, we can see that:
 
 \begin{align}
 	\theta_{i}(t+1) &= \overline{\theta}_{i} + \alpha_{i}\epsilon_{t+1} \nonumber \\
@@ -117,16 +117,18 @@ with $\alpha_{i}$ the dependence factor of the optimum on the environment, $\rho
 	\theta_{i}(t+1) &= \overline{\theta}_{i}(1-\rho) + \rho\theta_{i}(t) + \alpha_{i}\xi
 \end{align}
 
+The auto-correlation in the environment $\epsilon_{t}$ causes $\theta_{i}$ to be auto-correlated with the same correlation coefficient $\rho$.
+
 Using the same approach as in a constant environment, under weak selection, we end up having a similar equation than \eqref{eq:cstdeltaz} but with optimum depending on environment:
 
 \begin{equation}
 	\label{eq:deltazt}
 	\Delta\overline{z}_{t} = 
-		(\theta_{f}(t) - \overline{z})
+		(\theta_{f}(t) - \overline{z_{t}})
 		\left[ \frac{ v_{I} u_{I} G_{I} s_{0} m \overline{f_{1}} }{ \lambda_{t} (P_{I}+\omega_{f}) }
 			+ \frac{ v_{I} u_{M} G_{M} s_{0} \overline{f_{2}} }{ \lambda_{t} (P_{M} + \omega_{f}) }
 		\right]
-		+ (\theta_{s}(t) - \overline{z})
+		+ (\theta_{s}(t) - \overline{z_{t}})
 		\left[ \frac{ v_{I} u_{I} G_{I} \overline{s_{I}} (1-m) }{ \lambda_{t} (P_{I}+\omega_{s}) }
 		\right]
 \end{equation}
@@ -136,27 +138,27 @@ Plugging \eqref{eq:epstheta} in \eqref{eq:deltazt} we obtain
 \begin{subequations}
 	\begin{align}
 		\Delta\overline{z}_{t} &= 
-			(\overline{\theta}_{f} + \alpha_{f}\epsilon_{t} - \overline{z})
+			(\overline{\theta}_{f} + \alpha_{f}\epsilon_{t} - \overline{z_{t}})
 			\left[ \frac{ v_{I} u_{I} G_{I} s_{0} m \overline{f_{1}} }{ \lambda_{t} (P_{I}+\omega_{f}) }
 				+ \frac{ v_{I} u_{M} G_{M} s_{0} \overline{f_{2}} }{ \lambda_{t} (P_{M} + \omega_{f}) }
 			\right]
-			+ (\overline{\theta}_{s} + \alpha_{s}\epsilon_{t} - \overline{z})
+			+ (\overline{\theta}_{s} + \alpha_{s}\epsilon_{t} - \overline{z_{t}})
 			\left[ \frac{ v_{I} u_{I} G_{I} \overline{s_{I}} (1-m) }{ \lambda_{t} (P_{I}+\omega_{s}) }
 			\right] \nonumber \\
 	\end{align}
-	Defining the same $\gamma_{f}$ and $\gamma_{s}$ as in \eqref{eq:gammaf} and \eqref{eq:gammas}:
+	Defining the same $\gamma_{f}$, $\gamma_{s}$ and $\theta_{v}$ as in \eqref{eq:gammaf}, \eqref{eq:gammas} and \eqref{eq:thetav}, respectively:
 	\begin{align}
-			\Delta\overline{z}_{t} &= G_{I} \left[(\overline{\theta}_{f} + \alpha_{f}\epsilon_{t} - \overline{z})
+			\Delta\overline{z}_{t} &= G_{I} \left[(\overline{\theta}_{f} + \alpha_{f}\epsilon_{t} - \overline{z_{t}})
 			\gamma_{f}
-			+ (\overline{\theta}_{s} + \alpha_{s}\epsilon_{t} - \overline{z})
+			+ (\overline{\theta}_{s} + \alpha_{s}\epsilon_{t} - \overline{z_{t}})
 			\gamma_{s} \right] \nonumber \\
-			&= - G_{I} \left[ \gamma_{f}(\overline{z} - \theta_{f}) + \gamma_{s}(\overline{z} - \theta_{s}) \right] -G_{I} \epsilon_{t} \left( \gamma_{f}\alpha_{f} + \gamma_{s}\alpha_{s} \right) \nonumber \\
+			&= - G_{I} \left[ \gamma_{f}(\overline{z_{t}} - \theta_{f}) + \gamma_{s}(\overline{z_{t}} - \theta_{s}) \right] -G_{I} \epsilon_{t} \left( \gamma_{f}\alpha_{f} + \gamma_{s}\alpha_{s} \right) \nonumber \\
 			\label{eq:deltaztdeltaz}
 			\Delta\overline{z}_{t} &= \Delta\overline{z} + G_{I} \epsilon_{t} \left( \gamma_{f}\alpha_{f} + \gamma_{s}\alpha_{s} \right) \\
-			&= -G_{I}\gamma(\overline{z} - \theta_{v})  + G_{I} \epsilon_{t} \left( \gamma_{f}\alpha_{f} + \gamma_{s}\alpha_{s} \right) \nonumber \\
-			&= -G_{I}\gamma \left(\overline{z} - \theta_{v} - \epsilon_{t} \frac{\gamma_{f}\alpha_{f}+\gamma_{s}\alpha_{s}}{\gamma} \right) \nonumber \\
+			&= -G_{I}\gamma(\overline{z_{t}} - \theta_{v})  + G_{I} \epsilon_{t} \left( \gamma_{f}\alpha_{f} + \gamma_{s}\alpha_{s} \right) \nonumber \\
+			&= -G_{I}\gamma \left(\overline{z_{t}} - \theta_{v} - \epsilon_{t} \frac{\gamma_{f}\alpha_{f}+\gamma_{s}\alpha_{s}}{\gamma} \right) \nonumber \\
 			\label{eq:totaldeltazt}
-			\Delta\overline{z}_{t} &= -G_{I}\gamma (\overline{z} - \theta_{v} - \alpha_{v}\epsilon_{t})
+			\Delta\overline{z}_{t} &= -G_{I}\gamma (\overline{z_{t}} - \theta_{v} - \alpha_{v}\epsilon_{t})
 	\end{align}
 \end{subequations}
 With $\alpha_{v}$ a weighted component between $\alpha_{f}$ and $\alpha_{s}$, defined in similar fashion as $\theta_{v}$ in \eqref{eq:thetav}:
@@ -173,7 +175,7 @@ Taking \eqref{eq:totaldeltazt} we can estimate variance of $\overline{z}_{t}$. U
 	\label{eq:defdeltaat}
 	\Delta A_{t}=-D A_{t} + e_{t}
 \end{equation}
- with $A_{t}=\overline{z} - \theta_{v}$, $D = G_{I} \gamma$ and $e_{t} = D\alpha_{v}\epsilon_{t}$. \eqref{eq:defdeltaat} has a stationary solution:
+ with $A_{t}=\overline{z_{t}} - \theta_{v}$, $D = G_{I} \gamma$ and $e_{t} = D\alpha_{v}\epsilon_{t}$. \eqref{eq:defdeltaat} has a stationary solution:
 
 \begin{subequations}
 	\begin{equation}
@@ -197,8 +199,8 @@ We want to estimate how will $\overline{z}_{t}$ move away from the mean because 
 	&=  \sum_{r=0}^{\infty} \text{Var} \left[ \epsilon_{t-r} D \alpha_{v} (1-D)^{r} \right] \\
 	&\overset{\text{def}}{=} \sigma_{\epsilon}^{2} D^{2} \alpha_{v}^{2} \sum_{r=0}^{\infty} (1-D)^{2r} \\
 	\text{Var}(A_{t}) &= \sigma_{\epsilon}^{2} D^{2} \alpha_{v}^{2} \frac{1}{1-(1-D)^{2}} \\
-	\text{Var}(\overline{z}) &\overset{\text{def}}{=} \sigma_{\epsilon}^{2} G_{I}^{2}\gamma^{2} \alpha_{v}^{2} \frac{1}{G_{I}\gamma(2-G_{I}\gamma)} \\
+	\text{Var}(\overline{z_{t}}) &\overset{\text{def}}{=} \sigma_{\epsilon}^{2} G_{I}^{2}\gamma^{2} \alpha_{v}^{2} \frac{1}{G_{I}\gamma(2-G_{I}\gamma)} \\
 	\label{eq:varzws}
-	\text{Var}(\overline{z}) &\overset{\gamma \to 0}{=} \frac{1}{2} G_{I}\gamma\sigma_{\epsilon}^{2}\alpha_{v}^{2}
+	\text{Var}(\overline{z_{t}}) &\overset{\gamma \to 0}{=} \frac{1}{2} G_{I}\gamma\sigma_{\epsilon}^{2}\alpha_{v}^{2}
 	\end{aligned}
 \end{equation}
