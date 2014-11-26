@@ -1,10 +1,30 @@
 \documentclass[a4paper, 12pt]{article}
 
-\usepackage{fontspec}
-\usepackage{mathtools}
+%% Specify margins
 \usepackage[margin=2cm]{geometry}
+
+%% Use specific font
+\usepackage{fontspec}
 \setmainfont{Times New Roman}
 
+\usepackage{mathtools}
+
+%% ** Colors **
+\usepackage{color} 
+\definecolor{linkcol}{RGB}{0,0,238}
+
+%% For hyperref (link for figures, equations and papers)
+\usepackage{hyperref}
+\hypersetup{
+    breaklinks,
+    baseurl       = http://,
+    colorlinks    = true,
+    linkcolor     = linkcol,
+    citecolor     = linkcol,
+    pdfborder     = 0 0 0
+}
+
+%% Bibliography
 \usepackage{natbib}
 \begin{document}
 
@@ -21,6 +41,4 @@
 \input{5-AuthorsContributions.tex}
 
 \input{6-References.tex}
-\bibliographystyle{cell.bst}
-\bibliography{Bibliography}
 \end{document}
