@@ -105,8 +105,21 @@ To mimic environmental fluctuations, the optimums are fluctating around a given 
 \right.
 \end{equation}
 
-Under fluctuations we get another approximation supposing weak selection \citep{engen_evolution_2011}:
-...
+$\alpha_i$ is the sensitivity of $\theta_i$ to noise $\xi_i$. $\xi_f$ and $\xi_s$ are noise vectors drawn at each time step from a bivariate normal distribution with respectively $\sigma_f^2$ and $\sigma_i^2$ variances and correlation $\rho_N$. Thus we get normal fluctuations, correlated with $\rho_N$.
+
+Under varying environment, a.k.a optimums, we get an another approximation under weak selection from \citep{engen_evolution_2011} describing the change of mean phenotype:
+
+\begin{equation}
+	\Delta \overline{z}(t) = - G_I \gamma (\overline{z}(t) - \theta_v(t))
+\end{equation}
+With
+\begin{subequations}
+	\begin{align}
+		\gamma &= \gamma_f + \gamma_s \\
+		\theta_v(t) &= \overline{z_{eq}} + \xi_v \\
+		\xi_v &= \frac{\alpha_f \xi_f + \alpha_s \xi_s}{\alpha_f + \alpha_s}
+	\end{align}
+\end{subequations}
 
 \subsection*{Trend in change}
 ...
