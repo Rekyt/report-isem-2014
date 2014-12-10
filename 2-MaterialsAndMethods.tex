@@ -20,6 +20,14 @@ The corresponding Lefkovitch matrix is:
 	\end{pmatrix}
 \end{equation}
 
+From the original model (Sandell et al. 2014) we implemented density-dependence, so that population will not continuously increase but reach a plateau (see Fig.~\ref{fig:dd}). We chose to implement density-dependence through seed germination and survival parameter $s_{0}$ using a Beverton-Holt function to avoid chaotic behaviors:
+\begin{equation}
+	\label{eq:ddfunc}
+	s_{0} = \frac{s_{0, max}}{1 + k_{I} N_{I} + k_{M} N_{M}}
+\end{equation}
+
+with $k_{I}$ and $k_{M}$ the weights of immature ($N_{I}$) and mature ($N_{M}$) population respectively. $s_{0, max}$ is the maximum achievable $s_{0}$.
+
 \subsection*{Life-history traits}
 
 We considered certain life-history trait $s_{I}, f_{1}, f_{2}$ as gaussian for each individual such as:
@@ -35,11 +43,6 @@ Averaging over the population it gives:
 	\label{eq:poplht}
 	\overline{s_{I}}(\overline{z_{I}}) = s_{I}(\theta_{s}) \sqrt{\frac{\omega_{s}}{\omega_{s}+P_{I}}}	\exp\left(-\frac{(\overline{z_{I}} - \theta_{s})^2}{2(\omega_{s}+P_{I})}\right)
 \end{equation}
-
-Thus at the population level, the mean is:
-...
-
-\textbf{Density-dependence!} $s_{0}$ 
 
 \subsection*{Iterations at each timestep}
 
