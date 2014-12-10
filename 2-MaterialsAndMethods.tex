@@ -39,6 +39,7 @@ We considered certain life-history trait $s_{I}, f_{1}, f_{2}$ as gaussian for e
 
 Averaging over the population it gives:
 
+
 \begin{equation}
 	\label{eq:poplht}
 	\overline{s_{I}}(\overline{z_{I}}) = s_{I}(\theta_{s}) \sqrt{\frac{\omega_{s}}{\omega_{s}+P_{I}}}	\exp\left(-\frac{(\overline{z_{I}} - \theta_{s})^2}{2(\omega_{s}+P_{I})}\right)
@@ -61,7 +62,7 @@ Assuming the phenotype has a Gaussian distribution,  the mean genotypic value of
 With $c_{ij}$ defined as in \citep{barfield_evolution_2011}, that is $c_{ij} = \frac{n_j \overline{a_{ij}}}{n_i'}$, it is the contribution of stage $j$ individuals to next years pool of stage $i$ individuals, as a fraction of $i$ individuals at the next time step $n_i'$; and $\beta_{a_{II}}$ the gradient of selection as $\beta_{a_{IM}} = \frac{\partial \ln \overline{a_{IM}}}{\partial \overline{z_{M}}}$ 
 The first term is a weighted average of mean genotypes contributing to this stage; while the second shows the effect of selection.
 
-A similar recursion is given in \citep{barfield_evolution_2011} for phenotypes. They depend on terms of direct transition from one stage to the other $\overline{t_{ij}}$ and births $\overline{f_{ij}}$ (and we have $\overline{a_{ij}} = \overline{t_{ij}} + \overline{f_{ij}}$
+A similar recursion is given in \citep{barfield_evolution_2011} for phenotypes. They depend on terms of direct transition from one stage to the other $\overline{t_{ij}}$ and births $\overline{f_{ij}}$ (and we have $\overline{a_{ij}} = \overline{t_{ij}} + \overline{f_{ij}}$):
 
 \begin{subequations}
 	\begin{align}
@@ -121,16 +122,28 @@ With
 	\end{align}
 \end{subequations}
 
+With stage-structured population we get an approximation equivalent to the one without, and we see that the change in the mean phenotype depends on the sensitivity of the optimums as well as on the magnitude of the variations.
+
 \subsection*{Trend in change}
-...
+
+To induce a trend in the variation of the optimums we use the same formula as above but adding a term depending on time $kt$:
+
+\begin{equation}
+	\theta_i(t) = \overline{\theta_i} + k t + \xi_i
+\end{equation}
+
+With $k$ having a negative value, the optimums decrease with time.
 
 \subsection*{Phenofit data}
 
-PHENOFIT is phenology model...
+\textsc{PHENOFIT} is a phenology model including several models, from environmental and phenological data it simulates populations of trees to predict their range.
 
 On 6 localities (see map .) we had modelled budburst date and predicted fitnesses $\pm$ 21 days around this date, from these data we predicted the optimums fluctuations:
 ...
-All statistical analysis were made using R, for the plots we used the package ggplot2.
+
+\subsection*{General analyses}
+
+All statistical analyses were made using R, graphics were drawn using ggplot2.
 
 \begin{table}
 \begin{center}
@@ -165,6 +178,7 @@ All statistical analysis were made using R, for the plots we used the package gg
 		Noise variance for fecundity & $\sigma_{\xi_{f}}^2$ & 3.725 \\
 		Noise variance for survival & $\sigma_{\xi_{s}}^2$ & 3.725 \\
 		Correlation between noises & $\rho_{N}$ & 0.5 \\
+		Trend coefficient & $k$ & -0.15 \\
 		\hline \hline
 	\end{tabular}
 	\caption{Standard parameter set}
