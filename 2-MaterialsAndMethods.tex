@@ -97,6 +97,8 @@ With,
 	\end{equation}
 \end{subequations}
 
+$\gamma_f$ and $\gamma_s$ represent the respective weight of each of the optimum in the trade-off for $\overline{z_{eq}}$. Indeed, if $\theta_f = \theta_s$ then $\overline{z_{eq}} = \theta_f = \theta_s$. But if $\theta_f \neq \theta_s$, then the trade-off depends on $\gamma_f$ and $\gamma_s$ and the ratio between them.
+
 \subsection*{Fluctuating environment}
 
 To mimic environmental fluctuations, the optimums are fluctuating around a given as such:
@@ -109,7 +111,7 @@ To mimic environmental fluctuations, the optimums are fluctuating around a given
 \right.
 \end{equation}
 
-$\alpha_i$ is the sensitivity of $\theta_i$ to noise $\xi_i$. $\xi_f$ and $\xi_s$ are noise vectors drawn at each time step from a bi-variate normal distribution with respectively $\sigma_f^2$ and $\sigma_s^2$ variances and correlation $\rho_N$. Thus we get normal fluctuations, correlated with $\rho_N$.
+$\alpha_i$ is the sensitivity of $\theta_i$ to noise $\xi_i$. $\xi_f$ and $\xi_s$ are noise vectors drawn at each time step from a bi-variate normal distribution with respectively $\sigma_f^2$ and $\sigma_s^2$ variances and correlation $\rho_N$. Thus we get normal fluctuations, correlated with a correlation coefficient of $\rho_N$.
 
 Under varying environment, i.e. optimums, we get an another approximation under weak selection from \citep{engen_evolution_2011} describing the change of mean phenotype:
 
