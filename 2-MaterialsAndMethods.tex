@@ -37,13 +37,15 @@ We considered certain life-history trait $s_{I}, f_{1}, f_{2}$ as gaussian for e
 	s_{I}(z) = s_{I}(\theta_{s})	\exp\left(-\frac{(z - \theta_{s})^2}{2\omega_{s}}\right)
 \end{equation}
 
-Averaging over the population it gives:
+We have similar expressions for $f_1$ and $f_2$. Averaging over the population it gives:
 
 
 \begin{equation}
 	\label{eq:poplht}
 	\overline{s_{I}}(\overline{z_{I}}) = s_{I}(\theta_{s}) \sqrt{\frac{\omega_{s}}{\omega_{s}+P_{I}}}	\exp\left(-\frac{(\overline{z_{I}} - \theta_{s})^2}{2(\omega_{s}+P_{I})}\right)
 \end{equation}
+
+Again, we obtain similar expressions for $\overline{f_1}$ and $\overline{f_2}$.
 
 \subsection*{Iterations at each timestep}
 
@@ -108,7 +110,7 @@ To mimic environmental fluctuations, the optimums are fluctuating around a given
 
 $\alpha_i$ is the sensitivity of $\theta_i$ to noise $\xi_i$. $\xi_f$ and $\xi_s$ are noise vectors drawn at each time step from a bi-variate normal distribution with respectively $\sigma_f^2$ and $\sigma_i^2$ variances and correlation $\rho_N$. Thus we get normal fluctuations, correlated with $\rho_N$.
 
-Under varying environment, a.k.a optimums, we get an another approximation under weak selection from \citep{engen_evolution_2011} describing the change of mean phenotype:
+Under varying environment, i.e. optimums, we get an another approximation under weak selection from \citep{engen_evolution_2011} describing the change of mean phenotype:
 
 \begin{equation}
 	\Delta \overline{z}(t) = - G_I \gamma (\overline{z}(t) - \theta_v(t))
