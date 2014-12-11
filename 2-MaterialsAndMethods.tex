@@ -3,7 +3,7 @@
 
 \subsection*{Population model}
 
-We used a previously developed model with stage-structure \citetext{Sandell et al. 2014, master's thesis}. We considered to have a population of trees split in two classes, immature (I) and mature (M). The mature individuals are the only one to reproduce. Each year, an immature individual can survive with a probability $s_I$, mature and reproduce with a probability of $m$. At the same time, a mature individual has a probability $s_M$ to survive. First-time reproducers, i.e. immature that became mature and reproduce the same year, have a fecundity of $f_1$, while \"experienced\" reproducers, those who already reproduced at least once, have a fecundity of $f_2$. Produced seeds have a probability $s_0$ to survive and become immature. The standard parameters set is given in Table~\ref{tab:params}. The population census is just before reproduction, giving the following Lefkovitch matrix \citep{caswell_matrix_2001}:
+We used a previously developed model with stage-structure \citetext{Sandell et al. 2014, master's thesis}. We considered to have a population of trees split in two classes, immature (I) and mature (M). The mature individuals are the only one to reproduce. Each year, an immature individual can survive with a probability $s_I$, mature and reproduce with a probability of $m$. At the same time, a mature individual has a probability $s_M$ to survive. First-time reproducers, i.e. immature that became mature and reproduce the same year, have a fecundity of $f_1$, while \"experienced\" reproducers, those who already reproduced at least once, have a fecundity of $f_2$. Produced seeds have a probability $s_0$ to survive and become immature. The standard parameters set is given in (\autoref{tab:params}). The population census is just before reproduction, giving the following Lefkovitch matrix \citep{caswell_matrix_2001}:
 \begin{equation}
 	\label{eq:popmat}
 	A =
@@ -18,9 +18,9 @@ We used a previously developed model with stage-structure \citetext{Sandell et a
 	\end{pmatrix}
 \end{equation}
 
-Where $a_{ij}$ describes the contribution of stage $j$ individuals to stage $i$ the next year. With given initial conditions we can compute the number of individuals in the two stages by iterating matrix multiplication by $A$. \autoref{eq:beta1} \autoref{fig:dd}
+Where $a_{ij}$ describes the contribution of stage $j$ individuals to stage $i$ the next year. With given initial conditions we can compute the number of individuals in the two stages by iterating matrix multiplication by $A$.
 
-From the original model \citetext{Sandell et al. 2014, master's thesis} we implemented density-dependence, so that population will not continuously increase but reach a plateau (see Fig.~\ref{fig:dd}). We chose to implement density-dependence through seed germination and survival parameter $s_{0}$ using a Beverton-Holt function to avoid chaotic behaviors \citep{caswell_matrix_2001}:
+From the original model \citetext{Sandell et al. 2014, master's thesis} we implemented density-dependence, so that population will not continuously increase but reach a plateau (see \autoref{fig:dd}). We chose to implement density-dependence through seed germination and survival parameter $s_{0}$ using a Beverton-Holt function to avoid chaotic behaviors \citep{caswell_matrix_2001}:
 \begin{equation}
 	\label{eq:ddfunc}
 	s_{0} = \frac{s_{0, max}}{1 + k_{I} N_{I} + k_{M} N_{M}}
@@ -140,7 +140,7 @@ With $k$ having a negative value, the optimums decrease with time.
 
 \textsc{PHENOFIT} is a phenology model including several models, from environmental and phenological data it simulates populations of trees to predict their range~\citep{morin_tree_2008}.
 
-On 6 localities (see Fig.~\ref{fig:thetaf}) we had modeled bud burst date and predicted fitnesses $\pm$ 21 days around this date (fitness if bud burst date were modeled date + 1 day, etc.) from these data we predicted the optimums fluctuations as follow, if $z$ is Gaussian we know that selection gradient $\beta$ has the following form:
+On 6 localities (see \autoref{fig:thetaf}) we had modeled bud burst date and predicted fitnesses $\pm$ 21 days around this date (fitness if bud burst date were modeled date + 1 day, etc.) from these data we predicted the optimums fluctuations as follow, if $z$ is Gaussian we know that selection gradient $\beta$ has the following form:
 
 \begin{equation}
 	\label{eq:beta1}
