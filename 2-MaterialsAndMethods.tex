@@ -37,8 +37,8 @@ We considered certain life-history trait $s_{I}, f_{1}, f_{2}$ as gaussian for e
 	s_{I}(z) = s_{I}(\theta_{s})	\exp\left(-\frac{(z - \theta_{s})^2}{2\omega_{s}}\right)
 \end{equation}
 
-We have similar expressions for $f_1$ and $f_2$. Averaging over the population it gives:
 
+We have similar expressions for $f_1$ and $f_2$. Averaging over the population it gives:
 
 \begin{equation}
 	\label{eq:poplht}
@@ -47,7 +47,7 @@ We have similar expressions for $f_1$ and $f_2$. Averaging over the population i
 
 Again, we obtain similar expressions for $\overline{f_1}$ and $\overline{f_2}$.	
 
-\subsection*{Iterations at each timestep}
+\subsection*{Iterations at each time step}
 
 Assuming the phenotype has a Gaussian distribution,  the mean genotypic value of matures and immatures at the next timestep is given by (\citealt{barfield_evolution_2011} Eq.5) :
 
@@ -61,7 +61,8 @@ Assuming the phenotype has a Gaussian distribution,  the mean genotypic value of
 	\end{align}
 \end{subequations}
 
-With $c_{ij}$ defined as in \citep{barfield_evolution_2011}, that is $c_{ij} = \frac{n_j \overline{a_{ij}}}{n_i'}$, it is the contribution of stage $j$ individuals to next years pool of stage $i$ individuals, as a fraction of $i$ individuals at the next time step $n_i'$; and $\beta_{a_{II}}$ the gradient of selection as $\beta_{a_{IM}} = \frac{\partial \ln \overline{a_{IM}}}{\partial \overline{z_{M}}}$ 
+With $c_{ij}$ defined as in \citep{barfield_evolution_2011}, that is $c_{ij} = \frac{n_j \overline{a_{ij}}}{n_i'}$, it is the contribution of stage $j$ individuals to next years pool of stage $i$ individuals, as a fraction of $i$ individuals at the next time step $n_i'$; and $\beta_{a_{II}}$ the gradient of selection as $\beta_{a_{IM}} = \frac{\partial \ln \overline{a_{IM}}}{\partial \overline{z_{M}}}$.
+
 The first term is a weighted average of mean genotypes contributing to this stage; while the second shows the effect of selection.
 
 A similar recursion is given in \citep{barfield_evolution_2011} for phenotypes. They depend on terms of direct transition from one stage to the other $\overline{t_{ij}}$ and births $\overline{f_{ij}}$ (and we have $\overline{a_{ij}} = \overline{t_{ij}} + \overline{f_{ij}}$):
@@ -74,7 +75,7 @@ A similar recursion is given in \citep{barfield_evolution_2011} for phenotypes. 
 	\end{align}
 \end{subequations}
 
-With $\beta_{t_{II}}$ the gradient of selection as $\beta_{t_{II}} = \frac{\partial \ln \overline{t_{II}}}{\partial \overline{z_I}}$; $c_{ij}^t$ the contribution by direct transition of stage $j$ to stage $i$ and $c_{ij}^f$ the contribution by birth.
+With $\beta_{t_{II}}$ the gradient of selection defined as above in \autoref{eq:genotypic}, i.e. $\beta_{t_{II}} = \frac{\partial \ln \overline{t_{II}}}{\partial \overline{z_I}}$; $c_{ij}^t$ the contribution by direct transition of stage $j$ to stage $i$ and $c_{ij}^f$ the contribution by birth.
 
 \subsection*{Approximation under weak selection}
 
@@ -108,7 +109,7 @@ To mimic environmental fluctuations, the optimums are fluctuating around a given
 \right.
 \end{equation}
 
-$\alpha_i$ is the sensitivity of $\theta_i$ to noise $\xi_i$. $\xi_f$ and $\xi_s$ are noise vectors drawn at each time step from a bi-variate normal distribution with respectively $\sigma_f^2$ and $\sigma_i^2$ variances and correlation $\rho_N$. Thus we get normal fluctuations, correlated with $\rho_N$.
+$\alpha_i$ is the sensitivity of $\theta_i$ to noise $\xi_i$. $\xi_f$ and $\xi_s$ are noise vectors drawn at each time step from a bi-variate normal distribution with respectively $\sigma_f^2$ and $\sigma_s^2$ variances and correlation $\rho_N$. Thus we get normal fluctuations, correlated with $\rho_N$.
 
 Under varying environment, i.e. optimums, we get an another approximation under weak selection from \citep{engen_evolution_2011} describing the change of mean phenotype:
 
@@ -124,7 +125,7 @@ With
 	\end{align}
 \end{subequations}
 
-With stage-structured population we get an approximation equivalent to the one without, and we see that the change in the mean phenotype depends on the sensitivity of the optimums as well as on the magnitude of the variations.
+We see that the change in the mean phenotype depends on the sensitivity of the optimums as well as on the magnitude of the variations.
 
 \subsection*{Trend in change}
 
@@ -140,24 +141,24 @@ With $k$ having a negative value, the optimums decrease with time.
 
 \textsc{PHENOFIT} is a phenology model including several models, from environmental and phenological data it simulates populations of trees to predict their range~\citep{morin_tree_2008}.
 
-On 6 localities (see \autoref{fig:thetaf}) we had modeled bud burst date and predicted fitnesses $\pm$ 21 days around this date (fitness if bud burst date were modeled date + 1 day, etc.) from these data we predicted the optimums fluctuations as follow, if $z$ is Gaussian we know that selection gradient $\beta$ has the following form:
+On 6 localities (see \autoref{fig:thetaf}) we had modeled bud burst date and predicted fitnesses $\pm$ 21 days around this date (predicted fitness if bud burst date were modeled date +1 day, -1 day, etc.) from these data we predicted the optimums fluctuations. Considering the mean fecundity as a Gaussian function with the same form as $f_1$ in \autoref{eq:poplht}:
 
 \begin{equation}
 	\label{eq:beta1}
-	\beta = \frac{\theta_f - \overline{z}}{\omega_f + \sigma_z^2}
+	\beta = \frac{\partial \ln fec}{\partial \overline{z}} = \frac{\theta_f - \overline{z}}{\omega_f + \sigma_z^2}
 \end{equation}
 
 Using \citep{lande_measurement_1983}, with $z$ Gaussian, $p(z)$ the distribution of $z$ in the population, $f(z)$ the fitness associated with $z$ and $\overline{f}$ the mean fitness in the population:
 
 \begin{equation}
 	\label{eq:beta2}
-	\beta = \frac{\text{cov}(z, \frac{f(z)}{\overline{z}}}{\sigma_z^2}
+	\beta = \frac{\text{cov}(z, \frac{f(z)}{\overline{z}})}{\sigma_z^2}
 \end{equation}
 
 From \eqref{eq:beta1} and \eqref{eq:beta2} we can express $\theta_f$:
 
 \begin{equation}
-	\theta_f = \frac{\text{cov}(z, \frac{f(z)}{\overline{z}}}{\sigma_z^2} (\omega_f + \sigma_z^2) + \overline{z}
+	\theta_f = \frac{\text{cov}(z, \frac{f(z)}{\overline{z}})}{\sigma_z^2} (\omega_f + \sigma_z^2) + \overline{z}
 \end{equation}
 
 In our estimations we considered $p(z)$ to be Gaussian around the modeled date by \textsc{PHENOFIT}, with a variance of $P_I=40$ as in our analytic model. We normalized this distribution so that all dates in the population would be in the 21 days interval around the modeled date.
