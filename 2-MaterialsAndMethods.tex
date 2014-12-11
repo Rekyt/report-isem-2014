@@ -3,7 +3,7 @@
 
 \subsection*{Population model}
 
-We used a previously developed model with stage-structure \citetext{Sandell et al. 2014, master's thesis}. We considered to have a population of trees split in two classes, immature (I) and mature (M). The mature individuals are the only one to reproduce. Each year, an immature individual can survive with a probability $s_I$, mature and reproduce with a probability of $m$. At the same time, a mature individual has a probability $s_M$ to survive. First-time reproducers, i.e. immature that became mature and reproduce the same year, have a fecundity of $f_1$, while \"experienced\" reproducers, those who already reproduced at least once, have a fecundity of $f_2$. Produced seeds have a probability $s_0$ to survive and become immature. The population census is just before reproduction, giving the following Lefkovitch matrix \citep{caswell_matrix_2001}:
+We used a previously developed model with stage-structure \citetext{Sandell et al. 2014, master's thesis}. We considered to have a population of trees split in two classes, immature (I) and mature (M). The mature individuals are the only one to reproduce. Each year, an immature individual can survive with a probability $s_I$, mature and reproduce with a probability of $m$. At the same time, a mature individual has a probability $s_M$ to survive. First-time reproducers, i.e. immature that became mature and reproduce the same year, have a fecundity of $f_1$, while \"experienced\" reproducers, those who already reproduced at least once, have a fecundity of $f_2$. Produced seeds have a probability $s_0$ to survive and become immature. The standard parameters set is given in Table~\ref{tab:params}. The population census is just before reproduction, giving the following Lefkovitch matrix \citep{caswell_matrix_2001}:
 \begin{equation}
 	\label{eq:popmat}
 	A =
@@ -18,7 +18,7 @@ We used a previously developed model with stage-structure \citetext{Sandell et a
 	\end{pmatrix}
 \end{equation}
 
-Where $a_{ij}$ describes the contribution of stage $j$ individuals to stage $i$ the next year.
+Where $a_{ij}$ describes the contribution of stage $j$ individuals to stage $i$ the next year. With given initial conditions we can compute the number of individuals in the two stages by iterating matrix multiplication by $A$. \autoref{eq:beta1} \autoref{fig:dd}
 
 From the original model \citetext{Sandell et al. 2014, master's thesis} we implemented density-dependence, so that population will not continuously increase but reach a plateau (see Fig.~\ref{fig:dd}). We chose to implement density-dependence through seed germination and survival parameter $s_{0}$ using a Beverton-Holt function to avoid chaotic behaviors \citep{caswell_matrix_2001}:
 \begin{equation}
