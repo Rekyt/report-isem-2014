@@ -3,9 +3,7 @@
 
 \subsection*{Population model}
 
-We used a previously developed model with stage-structure (Cite XXXXX Sandell et al.). We have two classes in our simulated tree population: immatures (I) and matures (M).
-Explain the parameters.
-The corresponding Lefkovitch matrix is:
+We used a previously developed model with stage-structure \citetext{Sandell et al. 2014, master's thesis}. We considered to have a population of trees split in two classes, immature (I) and mature (M). The mature individuals are the only one to reproduce. Each year, an immature individual can survive with a probability $s_I$, mature and reproduce with a probability of $m$. At the same time, a mature individual has a probability $s_M$ to survive. First-time reproducers, i.e. immature that became mature and reproduce the same year, have a fecundity of $f_1$, while \"experienced\" reproducers, those who already reproduced at least once, have a fecundity of $f_2$. Produced seeds have a probability $s_0$ to survive and become immature. The population census is just before reproduction, giving the following Lefkovitch matrix \citep{caswell_matrix_2001}:
 \begin{equation}
 	\label{eq:popmat}
 	A =
@@ -20,7 +18,9 @@ The corresponding Lefkovitch matrix is:
 	\end{pmatrix}
 \end{equation}
 
-From the original model (Sandell et al. 2014) we implemented density-dependence, so that population will not continuously increase but reach a plateau (see Fig.~\ref{fig:dd}). We chose to implement density-dependence through seed germination and survival parameter $s_{0}$ using a Beverton-Holt function to avoid chaotic behaviors:
+Where $a_{ij}$ describes the contribution of stage $j$ individuals to stage $i$ the next year.
+
+From the original model \citetext{Sandell et al. 2014, master's thesis} we implemented density-dependence, so that population will not continuously increase but reach a plateau (see Fig.~\ref{fig:dd}). We chose to implement density-dependence through seed germination and survival parameter $s_{0}$ using a Beverton-Holt function to avoid chaotic behaviors \citep{caswell_matrix_2001}:
 \begin{equation}
 	\label{eq:ddfunc}
 	s_{0} = \frac{s_{0, max}}{1 + k_{I} N_{I} + k_{M} N_{M}}
@@ -45,7 +45,7 @@ We have similar expressions for $f_1$ and $f_2$. Averaging over the population i
 	\overline{s_{I}}(\overline{z_{I}}) = s_{I}(\theta_{s}) \sqrt{\frac{\omega_{s}}{\omega_{s}+P_{I}}}	\exp\left(-\frac{(\overline{z_{I}} - \theta_{s})^2}{2(\omega_{s}+P_{I})}\right)
 \end{equation}
 
-Again, we obtain similar expressions for $\overline{f_1}$ and $\overline{f_2}$.
+Again, we obtain similar expressions for $\overline{f_1}$ and $\overline{f_2}$.	
 
 \subsection*{Iterations at each timestep}
 
