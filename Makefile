@@ -14,7 +14,7 @@ reporttemplate.tex: 0-Summary.tex 1-Introduction.tex 2-MaterialsAndMethods.tex 3
 	@touch $@
 
 wc:
-	@perl texcount.pl -inc -nobib reporttemplate.tex
+	@perl texcount.pl -inc -nobib -sum=1,1,1,0,0,0,0 reporttemplate.tex
 
 clean:
 	@echo "Removing .log files..."
