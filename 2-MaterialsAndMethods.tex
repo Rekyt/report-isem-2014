@@ -134,6 +134,7 @@ We see that the change in the mean phenotype depends on the sensitivity of the o
 To induce a trend in the variation of the optimums we use the same formula as above but adding a term depending on time $kt$:
 
 \begin{equation}
+	\label{eq:kt}
 	\theta_i(t) = \overline{\theta_i} + k t + \xi_i
 \end{equation}
 
@@ -165,9 +166,13 @@ From \eqref{eq:beta1} and \eqref{eq:beta2} we can express $\theta_f$:
 
 In our estimations we considered $p(z)$ to be Gaussian around the modeled date by \textsc{PHENOFIT}, with a variance of $P_I=40$ as in our analytic model. We normalized this distribution so that all dates in the population would be in the 21 days interval around the modeled date.
 
-\subsection*{General analyses}
+\subsection*{Trend analyses}
 
-All statistical analyses were made using R, graphics were drawn using ggplot2.
+All statistical analyses were made using R, graphics were drawn using ggplot2, data was handled using dplyr.
+
+To estimate the trend of the $\theta_f$ variations, we considered a trend model with three components: a general decreasing linear trend, a white noise component with a constant variance and a more dramatic noise leading to "catastrophic" events, with negative $\theta_f$ values.
+
+Thus to estimate the trend and the regular we wanted to exclude those catastrophic events, thus we kept only value of $\theta_f$ over 60, which is lower bound of the realizable range of bud burst date of oak trees. Then we performed a linear regression between values of $\theta_f$ and time, giving us an estimation of $k$ from \autoref{eq:kt}. Analyzing the residuals would give us the variance of $\alpha_f \xi_f$ from the same equation.
 
 \begin{table}
 \begin{center}
