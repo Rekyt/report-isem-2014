@@ -7,12 +7,16 @@ We used the previously developed model in \citetext{Sandell et al. 2014, master'
 
 Indeed, density-dependence introduced a limit in the population (\autoref{fig:dd} right panel), as the number of mature and immature individuals seem to converge respectively to $18000$ and $10000$ individuals, while without density-dependence the population is exponentially growing.
 
-Introduction of DD should decrease mean phenotype (lower $s_{0}$) and limit population size
+Looking at the phenotype, we started from exactly the same starting point $z=116$ for phenotypic and genotypic values. Without density-dependence, the population quickly converge to the equilibrium phenotype ($\overline{z_{weak}}$ given by the approximation in~\autoref{eq:zweak}), $\overline{z_{weak}} = 166$ in this case. With density-dependence the equilibrium is shifted upward ($\overline{z_{weak, dd}} = 121.8$).
+
+This shift is due to the decrease of $s_0$ in the density-dependent model, indeed because of the initial population $s_{0, dd} = 1.18 10^-3$ while $s_0 = 0.03$ without density-dependence. This difference, all else being equal, changes the equilibrium of $\overline{z_{weak}}$. With a lower seed survival, the equilibrium is shifted towards $\theta_s$, i.e. the survival optimum for immature, because it compensates to maintain the demographic equilibrium (growth rate = 1).
+
+Within the density-dependent model the mean immature phenotype $\overline{z_I}$ converge quicker than the mean mature phenotype $\overline{z_M}$ to the equilibrium. It is because of stage-structured nature of our model, the mature stage is a combination of individuals that lived for around 40 generations (given our life-cycle), it buffers adaptation. To change $\overline{z_M}$, the individual have first to be closer to $\overline{z_{weak}}$ than to survive for a certain number of years and become mature. While the newborns of the given generation are already closer to the equilibrium.
 
 \begin{figure}[ht!]
 	\centering
 	\includegraphics[scale=1]{Figures/DDphenopop.pdf}
-	\caption{\textbf{Effect of density-dependence on phenotypes and populations}. Left panel: Phenotype variations in population ($\overline{z_I}, \overline{z_M}$) with their corresponding genotypic values ($\overline{g_I}, \overline{g_M}$) all starting from $z = 166$, and the approximation given by \autoref{eq:zweak}; right panel: demography, number of immature individuals ($N_I$, red), number of mature individuals ($N_M$, blue)} starting from Stable-Stage Distribution (SSD).
+	\caption{\textbf{Effect of density-dependence on phenotypes and populations}. \textbf{Left panel}: Phenotype variations in population ($\overline{z_I}, \overline{z_M}$) with their corresponding genotypic values ($\overline{g_I}, \overline{g_M}$) all starting from $z = 166$, and the approximation given by \autoref{eq:zweak}; \textbf{right panel}: demography, number of immature individuals ($N_I$, red), number of mature individuals ($N_M$, blue)} starting from Stable-Stage Distribution (SSD), note the logarithmic scale used.
 	\label{fig:dd}
 \end{figure}
 
