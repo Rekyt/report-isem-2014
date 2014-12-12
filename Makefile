@@ -1,6 +1,6 @@
 # Makefile for report
 
-.PHONY: all clean word
+.PHONY: all clean wc wcsum
 
 all: reporttemplate.pdf
 
@@ -15,6 +15,9 @@ reporttemplate.tex: 0-Summary.tex 1-Introduction.tex 2-MaterialsAndMethods.tex 3
 
 wc:
 	@perl texcount.pl -inc -nobib -sum=1,1,1,0,0,0,0 reporttemplate.tex
+
+wcsum:
+	@perl texcount.pl 0-Summary.tex
 
 clean:
 	@echo "Removing .log files..."
