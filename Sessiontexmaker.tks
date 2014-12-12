@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TexmakerSession quickmode="3">
-    <document hasfocus="false" master="false" line="22" bookmark1="0" bookmark2="0" file="/Users/Rekyt/Documents/ENS/M2/Stage ISEM/report-isem-2014/2-MaterialsAndMethods.tex" bookmark3="0"/>
-    <document hasfocus="true" master="true" line="0" bookmark1="0" bookmark2="0" file="/Users/Rekyt/Documents/ENS/M2/Stage ISEM/report-isem-2014/reporttemplate.tex" bookmark3="0"/>
+    <document hasfocus="false" master="false" line="171" bookmark1="0" bookmark2="0" file="/Users/Rekyt/Documents/ENS/M2/Stage ISEM/report-isem-2014/2-MaterialsAndMethods.tex" bookmark3="0"/>
+    <document hasfocus="true" master="false" line="166" bookmark1="0" bookmark2="0" file="/Users/Rekyt/Documents/ENS/M2/Stage ISEM/report-isem-2014/Bibliography.bib" bookmark3="0"/>
+    <document hasfocus="false" master="true" line="30" bookmark1="0" bookmark2="0" file="/Users/Rekyt/Documents/ENS/M2/Stage ISEM/report-isem-2014/reporttemplate.tex" bookmark3="0"/>
+    <document hasfocus="false" master="false" line="16" bookmark1="0" bookmark2="0" file="/Users/Rekyt/Documents/ENS/M2/Stage ISEM/report-isem-2014/3-Results.tex" bookmark3="0"/>
 </TexmakerSession>
