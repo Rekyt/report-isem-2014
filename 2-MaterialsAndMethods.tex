@@ -137,7 +137,12 @@ To induce a trend in the variation of the optimums we use the same formula as ab
 
 \begin{equation}
 	\label{eq:kt}
-	\theta_i(t) = \overline{\theta_i} + k t + \xi_i
+	\left\{
+	\begin{aligned}
+		\theta_i(t) &= \overline{\theta_i} + \alpha_i\epsilon(t) \\
+		\epsilon(t) &== kt + \xi_i
+	\end{aligned}
+	\right\}
 \end{equation}
 
 With $k$ having a negative value, the optimums decrease with time.
@@ -150,7 +155,7 @@ On 6 localities (see \autoref{fig:thetaf}) we had modeled bud burst date and pre
 
 \begin{equation}
 	\label{eq:beta1}
-	\beta = \frac{\partial \ln fec}{\partial \overline{z}} = \frac{\theta_f - \overline{z}}{\omega_f + \sigma_z^2}
+	\beta = \frac{\partial \ln \text{fec}}{\partial \overline{z}} = \frac{\theta_f - \overline{z}}{\omega_f + \sigma_z^2}
 \end{equation}
 
 Using \citep{lande_measurement_1983}, with $z$ Gaussian, $p(z)$ the distribution of $z$ in the population, $f(z)$ the fitness associated with $z$ and $\overline{f}$ the mean fitness in the population:
