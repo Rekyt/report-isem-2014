@@ -20,9 +20,9 @@ Within the density-dependent model the mean immature phenotype $\overline{z_I}$ 
 	\label{fig:dd}
 \end{figure}
 
-\subsection*{Fluctuating optimums}
+\subsection*{Fluctuating optima}
 
-To mimic a more realistic environment we made the optimums fluctuate, with various correlations between them. We simulated three populations using the same random seed. We only vary correlations between noises.
+To mimic a more realistic environment we made the optima fluctuate, with various correlations between them. We simulated three populations using the same random seed. We only vary correlations between noises.
 
 Explain in the text correlation of $z_{I}$ with $\theta_{s}(t)$
 
@@ -38,15 +38,21 @@ Explain in the text correlation of $z_{I}$ with $\theta_{s}(t)$
 \begin{figure}[ht!]
 	\centering
 	\includegraphics[scale=1]{Figures/Trend.pdf}
-	\caption{\textbf{Mixed influences of trend and fluctuations on the population}. \textbf{Top panel}: Phenotype evolution with and without fluctuations; \textbf{Bottom panel:} (\textbf{Left}) Life-History Traits evolution depending on fluctuations, (\textbf{Right}) demography. Results shown with fluctuations were averaged over 15 independent simulations.}
+	\caption{\textbf{Mixed influences of trend and fluctuations on the population}. \textbf{Top panel}: Phenotype evolution with and without fluctuations, results from a single simulation; \textbf{Bottom panel:} (\textbf{Left}) Life-History Traits evolution depending on fluctuations, survival are rates while fecundities are expressed in produced seeds; (\textbf{Right}) demography. \textbf{With fluct.}: fluctuating optima with a linear trend, \textbf{No fluct.} linearly decreasing optima. Results shown with fluctuations were averaged over 15 independent simulations for demography and life-history traits.}
 	\label{fig:trend}
 \end{figure}
 
 We implemented a decreasing trend in $\theta_f$, linearly and with fluctuations (\autoref{fig:trend}) to mimic climate change. We averaged 15 simulations with fluctuations to understand better the effect of fluctuations.
 
-From~\autoref{fig:trend}, as observed in an environment without a decreasing trend, fluctuations make $\overline{z_I}$ fluctuate, while $\overline{z_M}$ not.
+From~\autoref{fig:trend}, as observed in an environment without a decreasing trend, fluctuations make $\overline{z_I}$ fluctuate, while $\overline{z_M}$ not. It is due to the stage-structure of population, indeed the mature class is a buffers variation because it integrates selection over a very long period; while the immature class have new individuals sensitive to current environment each year.
 
-As expected, the decreasing trend in $\theta_f$ creates a lag between the optimums and the mean population values, because adaptation is slower than the rate of change. However, the population can still survive with such a rate if the difference between the optimums and the means become constant. On a very long scale (~2500 years) it is what happens in this case, the population maintain by changing its phenotype fast enough to track the optimums variation (data not shown).
+Looking at life-history traits, $s_I$ has an interesting behavior, it first increases, reaches a maximum, than decreases. The decreasing trend in optima variation causes at first the mean population phenotype to move closer to $\theta_s$, thus maximizing $s_I$ values when it crosses $\theta_s$ line, as soon as it moves beyond $s_I$ starts to decrease again. The fluctuations seem to decrease $s_I$ (mean difference of 0.5), it may be a cost associated with the variance of optimum fluctuations, the optimum is often under the mean population value.
+
+The fluctuations do not seem to affect fecundity differently from the same environment, $f_1$ and $f_2$ decrease because the mean population phenotype go further away from $\theta_f$. Note that they follow exactly the same evolution as the only difference between them is the fecundity value at the optimum date (see \autoref{tab:params}).
+
+Seed germination and survival $s_0$ is increased by fluctuations, via an indirect mechanism: fluctuations decrease immature survival $s_I$, thus decreasing the immature population $N_I$ and so the mature population $N_M$; this population decrease also decrease competition and density, increasing $s_0$ as it is density-dependent (see~\autoref{eq:ddfunc}).
+
+As expected, the decreasing trend in $\theta_f$ creates a lag between the optima and the mean population values, because adaptation is slower than the rate of change. However, the population can still survive with such a rate if the difference between the optima and the means become constant. On a very long scale (~2500 years) it is what happens in this case, the population maintain by changing its phenotype fast enough to track the optima variation (data not shown).
 
 \subsection*{Estimation of the fluctuations}
 
