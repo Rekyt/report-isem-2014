@@ -102,7 +102,7 @@ $\gamma_f$ and $\gamma_s$ represent the respective weight of each of the optimum
 
 \subsection*{Fluctuating environment}
 
-To mimic environmental fluctuations, the optimums are fluctuating around a given as such:
+To mimic environmental fluctuations, the optima are fluctuating around a given as such:
 \begin{equation}
 \left\{
 	\begin{aligned}
@@ -114,7 +114,7 @@ To mimic environmental fluctuations, the optimums are fluctuating around a given
 
 $\alpha_i$ is the sensitivity of $\theta_i$ to noise $\xi_i$. $\xi_f$ and $\xi_s$ are noise vectors drawn at each time step from a bi-variate normal distribution with respectively $\sigma_f^2$ and $\sigma_s^2$ variances and correlation $\rho_N$. Thus we get normal fluctuations, correlated with a correlation coefficient of $\rho_N$.
 
-Under varying environment, i.e. optimums, we get an another approximation under weak selection from \citep{engen_evolution_2011} describing the change of mean phenotype:
+Under varying environment, i.e. optima, we get an another approximation under weak selection from \citep{engen_evolution_2011} describing the change of mean phenotype:
 
 \begin{equation}
 	\label{eq:zfluct}
@@ -129,11 +129,11 @@ With
 	\end{align}
 \end{subequations}
 
-We see that the change in the mean phenotype depends on the sensitivity of the optimums as well as on the magnitude of the variations.
+We see that the change in the mean phenotype depends on the sensitivity of the optima as well as on the magnitude of the variations.
 
 \subsection*{Trend in change}
 
-To induce a trend in the variation of the optimums we use the same formula as above but adding a term depending on time $kt$:
+To induce a trend in the variation of the optima we use the same formula as above but adding a term depending on time $kt$:
 
 \begin{equation}
 	\label{eq:kt}
@@ -145,13 +145,13 @@ To induce a trend in the variation of the optimums we use the same formula as ab
 	\right\}
 \end{equation}
 
-With $k$ having a negative value, the optimums decrease with time.
+With $k$ having a negative value, the optima decrease with time.
 
 \subsection*{Phenofit data}
 
 \textsc{PHENOFIT} is a phenology model including several models, from environmental and phenological data it simulates populations of trees to predict their range~\citep{morin_tree_2008}.
 
-On 6 localities (see \autoref{fig:thetaf}) we had modeled bud burst date and predicted fitnesses $\pm$ 21 days around this date (predicted fitness if bud burst date were modeled date +1 day, -1 day, etc.) from these data we predicted the optimums fluctuations. Considering the mean fecundity as a Gaussian function with the same form as $f_1$ in \autoref{eq:poplht}:
+On 6 localities (see \autoref{fig:thetaf}) we had modeled bud burst date and predicted fitnesses $\pm$ 21 days around this date (predicted fitness if bud burst date were modeled date +1 day, -1 day, etc.) from these data we predicted the optima fluctuations. Considering the mean fecundity as a Gaussian function with the same form as $f_1$ in \autoref{eq:poplht}:
 
 \begin{equation}
 	\label{eq:beta1}
@@ -319,7 +319,7 @@ Thus to estimate the trend and the regular we wanted to exclude those catastroph
 %\subsection*{Under varying environment, without plasticity}
 %From \citet{engen_evolution_2011}, we derived equations for mean variation of phenotype on our model.
 %
-%We supposed an auto-correlated fluctuating environment $\epsilon_{t}$ influencing optimums $\theta_{i}$ such as:
+%We supposed an auto-correlated fluctuating environment $\epsilon_{t}$ influencing optima $\theta_{i}$ such as:
 %\begin{align}
 %	\label{eq:epstheta}
 %\left\{
