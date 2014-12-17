@@ -96,13 +96,13 @@ A similar recursion is given in \citep{barfield_evolution_2011} for phenotypes. 
 
 \subsection*{Approximation under weak selection}
 
-Under weak selection, the mean phenotype in the population $\overline{z}$ follow the given approximations under constant environment from \citep{engen_evolution_2011}:
+Under weak selection, the mean phenotype at equilibrium in the population $\overline{z}$ follows in constant environment \citep{engen_evolution_2011}:
 
 \begin{equation}
 	\label{eq:zweak}
 	\overline{z_{eq}} = \frac{\gamma_{f}\theta_{f} + \gamma_{s}\theta_{s}}{\gamma_{f} + \gamma_{s}}
 \end{equation}
-With,
+, with,
 \begin{subequations}
 	\begin{equation}
 	\label{eq:gammaf}
@@ -115,11 +115,11 @@ With,
 	\end{equation}
 \end{subequations}
 
-$\gamma_f$ and $\gamma_s$ represent the respective weight of each of the optimum in the trade-off for $\overline{z_{eq}}$. Indeed, if $\theta_f = \theta_s$ then $\overline{z_{eq}} = \theta_f = \theta_s$. But if $\theta_f \neq \theta_s$, then the trade-off depends on $\gamma_f$ and $\gamma_s$ and the ratio between them.
+$\gamma_f$ and $\gamma_s$ represent the respective weight of each of the optimum in the trade-off between $\theta_f$ and $\theta_s$ for $\overline{z_{eq}}$. Indeed, if $\theta_f = \theta_s$ then $\overline{z_{eq}} = \theta_f = \theta_s$. But if $\theta_f \neq \theta_s$, then the mean phenotype on the trade-off depends on $\gamma_f$ and $\gamma_s$ and the ratio between them.
 
-\subsection*{Fluctuating environment}
+\subsection*{Fluctuating optimums}
 
-To mimic environmental fluctuations, the optima are fluctuating around a given as such:
+During my internship, I tried to mimic environmental fluctuations, by making the optima fluctuate as such:
 \begin{equation}
 \left\{
 	\begin{aligned}
@@ -131,13 +131,13 @@ To mimic environmental fluctuations, the optima are fluctuating around a given a
 
 $\alpha_i$ is the sensitivity of $\theta_i$ to noise $\xi_i$. $\xi_f$ and $\xi_s$ are noise vectors drawn at each time step from a bi-variate normal distribution with respectively $\sigma_f^2$ and $\sigma_s^2$ variances and correlation $\rho_N$. Thus we get normal fluctuations, correlated with a correlation coefficient of $\rho_N$.
 
-Under varying environment, i.e. optima, we get an another approximation under weak selection from \citep{engen_evolution_2011} describing the change of mean phenotype:
+Under varying environment we get an another approximation under weak selection from \citep{engen_evolution_2011} describing the change of mean phenotype:
 
 \begin{equation}
 	\label{eq:zfluct}
 	\Delta \overline{z}(t) = - G_I \gamma (\overline{z}(t) - \theta_v(t))
 \end{equation}
-With
+, with
 \begin{subequations}
 	\begin{align}
 		\gamma &= \gamma_f + \gamma_s \\
@@ -146,11 +146,11 @@ With
 	\end{align}
 \end{subequations}
 
-We see that the change in the mean phenotype depends on the sensitivity of the optima as well as on the magnitude of the variations.
+We see that the change in the mean phenotype depends on the sensitivity of the optima $\alpha_i$ as well as on the magnitude of the variations.
 
 \subsection*{Trend in change}
 
-To induce a trend in the variation of the optima we use the same formula as above but adding a term depending on time $kt$:
+To model climate-change, and especially the trend to increase temperature with time, we included a trend in the variation of the optima. The optima still experience fluctuations as above they linearly vary with time:
 
 \begin{equation}
 	\label{eq:kt}
@@ -159,23 +159,23 @@ To induce a trend in the variation of the optima we use the same formula as abov
 		\theta_i(t) &= \overline{\theta_i} + \alpha_i\epsilon(t) \\
 		\epsilon(t) &= kt + \xi_i
 	\end{aligned}
-	\right\}
+	\right\.
 \end{equation}
 
 With $k$ having a negative value, the optima decrease with time.
 
 \subsection*{Phenofit data}
 
-\textsc{PHENOFIT} is a phenology model including several models, from environmental and phenological data it simulates populations of trees to predict their range~\citep{morin_tree_2008}.
+\textsc{PHENOFIT} is a phenology model including several sub-models, from environmental and phenological data it simulates the survival and reproduction of an average tree to predict its range~\citep{morin_tree_2008}.
 
-On 6 localities (see \autoref{fig:thetaf}) we had modeled bud burst date and predicted fitnesses $\pm$ 21 days around this date (predicted fitness if bud burst date were modeled date +1 day, -1 day, etc.) from these data we predicted the optima fluctuations. Considering the mean fecundity as a Gaussian function with the same form as $f_1$ in \autoref{eq:poplht}:
+ We used output from \textsc{PHENOFIT} (simulations performed by A. Duputié) from 1950 to 2100 for the sessile oak (\textit{Quercus petraea}) about predicted bud burst date and predicted fitnesses in 6 localities (see \autoref{fig:thetaf}). We had fitness predictions for phenotype around the modeled date (a range of 21 days). From these data we predicted the optima fluctuations. Considering fecundity $f$ as a Gaussian function around this date with the same form as $f_1$ in \autoref{eq:poplht}:
 
 \begin{equation}
 	\label{eq:beta1}
-	\beta = \frac{\partial \ln \text{fec}}{\partial \overline{z}} = \frac{\theta_f - \overline{z}}{\omega_f + \sigma_z^2}
+	\beta = \frac{\partial \ln f}{\partial \overline{z}} = \frac{\theta_f - \overline{z}}{\omega_f + \sigma_z^2}
 \end{equation}
 
-Using \citep{lande_measurement_1983}, with $z$ Gaussian, $p(z)$ the distribution of $z$ in the population, $f(z)$ the fitness associated with $z$ and $\overline{f}$ the mean fitness in the population:
+Using \citep{lande_measurement_1983}, with $z$ Gaussian, $p(z)$ the distribution of $z$ in the population, $f(z)$ the fitness associated with $z$ and $\overline{f}$ the mean fitness in the population, we computed selection gradients from PHENOFIT simulation outputs as::
 
 \begin{equation}
 	\label{eq:beta2}
@@ -188,7 +188,7 @@ From \eqref{eq:beta1} and \eqref{eq:beta2} we can express $\theta_f$:
 	\theta_f = \frac{\text{cov}(z, \frac{f(z)}{\overline{z}})}{\sigma_z^2} (\omega_f + \sigma_z^2) + \overline{z}
 \end{equation}
 
-In our estimations we considered $p(z)$ to be Gaussian around the modeled date by \textsc{PHENOFIT}, with a variance of $P_I=40$ as in our analytic model. We normalized this distribution so that all dates in the population would be in the 21 days interval around the modeled date.
+In our estimations we considered $p(z)$ to be Gaussian around the modeled date by \textsc{PHENOFIT}, with a variance of $P_I=40$ as in our analytic model. We normalized this distribution so that all dates in the population would be in the 42 days interval around the modeled date.
 
 \subsection*{Trend analyses}
 
@@ -196,7 +196,7 @@ All statistical analyses were made using R~\citep{R_2014}, graphics were drawn u
 
 To estimate the trend of the $\theta_f$ variations, we considered a trend model with three components: a general decreasing linear trend, a white noise component with a constant variance and a more dramatic noise leading to "catastrophic" events, with negative $\theta_f$ values.
 
-Thus to estimate the trend and the regular we wanted to exclude those catastrophic events, thus we kept only value of $\theta_f$ over 60, which is lower bound of the realizable range of bud burst date of oak trees. Then we performed a linear regression between values of $\theta_f$ and time, giving us an estimation of $k$ from \autoref{eq:kt}. Analyzing the residuals would give us the variance of $\alpha_f \xi_f$ from the same equation.
+The regular noise and the trend were estimated excluding those catastrophic events, we kept only value of $\theta_f$ over 60, which is the lower bound of the realizable range of bud burst date of oak trees. Then we performed a linear regression between values of $\theta_f$ and time, giving us an estimation of $k$ from \autoref{eq:kt}. Analyzing the residuals gives us the variance of $\alpha_f \xi_f$ from the same equation.
 
 \begin{table}
 \begin{center}
