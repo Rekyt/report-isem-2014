@@ -53,12 +53,16 @@ The optimal trait values $\theta_s$ and $\theta_f$ differ between stages and lif
 If we want to compute mean transition rate $\overline{a_{ij}}$, we need to average $s_I$, $f_1$ and $f_2$ (ex: $\overline{a_{IM}} = s_0 \overline{f_2}$):
 
 \begin{equation}
+	\mathrm{E}[s_I] = \overline{s_I} = \int p_I(z)s_I(z)\,\text{d}z
+\end{equation}
+, with $p_I(z)$ the distribution of $z$ in the immature stage, as we study a quantitative trait we suppose $p_I$ has a Gaussian distribution with mean $\overline{z_I}$ and width $P_I$ the phenotypic variance in the immature stage~\citep{lande_quantitative_1982}. We end with the following expression for $\overline{s_I}$:
+
+\begin{equation}
 	\label{eq:poplht}
-	
 	\overline{s_{I}}(\overline{z_{I}}) = s_{I}(\theta_{s}) \sqrt{\frac{\omega_{s}}{\omega_{s}+P_{I}}}	\exp\left(-\frac{(\overline{z_{I}} - \theta_{s})^2}{2(\omega_{s}+P_{I})}\right)
 \end{equation}
 
-, with $P_I$ the phenotypic variance in the immature stage. Again, we obtain similar expressions for $\overline{f_1}$ and $\overline{f_2}$.	
+We obtain similar expressions for $\overline{f_1}$ and $\overline{f_2}$.	
 
 \subsection*{Iterations at each time step}
 
