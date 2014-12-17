@@ -42,17 +42,16 @@ Explain in the text correlation of $z_{I}$ with $\theta_{s}(t)$
 	\label{fig:trend}
 \end{figure}
 
-We implemented a decreasing trend in $\theta_f$ with fluctuations (\autoref{fig:trend}) to mimic climate change. We averaged 15 simulations with fluctuations to understand better the effect of fluctuations.
+We implemented a decreasing trend in $\theta_f$ with fluctuations (\autoref{fig:trend}) to mimic climate change.
+We averaged values over 15 simulations for life-history traits while showed a single simulation for the phenotype (respectively bottom and top panels \autoref{fig:trend}).
 
-From~\autoref{fig:trend}, as observed in an environment without a decreasing trend, fluctuations make $\overline{z_I}$ fluctuate, while $\overline{z_M}$ not. It is due to the stage-structure of population, indeed the mature class is a buffers variation because it integrates selection over a very long period; while the immature class have new individuals sensitive to current environment each year.
+$s_I$ has an interesting behavior, it first increases, reaches a maximum, then decreases. The decreasing trend in optima variation causes at first the mean population phenotype to move closer to $\theta_s$, thus maximizing $s_I$ values when it crosses $\theta_s$ line, as soon as it moves beyond $s_I$ starts to decrease again. The fluctuations seem to decrease $s_I$ (mean difference of 0.5), it may be a cost associated with the variance of optimum fluctuations, the optimum is often under the mean population value.
 
-Looking at life-history traits, $s_I$ has an interesting behavior, it first increases, reaches a maximum, than decreases. The decreasing trend in optima variation causes at first the mean population phenotype to move closer to $\theta_s$, thus maximizing $s_I$ values when it crosses $\theta_s$ line, as soon as it moves beyond $s_I$ starts to decrease again. The fluctuations seem to decrease $s_I$ (mean difference of 0.5), it may be a cost associated with the variance of optimum fluctuations, the optimum is often under the mean population value.
-
-The fluctuations do not seem to affect fecundity differently from the same environment, $f_1$ and $f_2$ decrease because the mean population phenotype go further away from $\theta_f$. Note that they follow exactly the same evolution as the only difference between them is the fecundity value at the optimum date (see \autoref{tab:params}).
+On the contrary $f_1$ and $f_2$ do not show a different pattern with or without fluctuations. They decrease because the mean population phenotype go further away from $\theta_f$.
 
 Seed germination and survival $s_0$ is increased by fluctuations, via an indirect mechanism: fluctuations decrease immature survival $s_I$, thus decreasing the immature population $N_I$ and so the mature population $N_M$; this population decrease also decrease competition and density, increasing $s_0$ as it is density-dependent (see~\autoref{eq:ddfunc}).
 
-As expected, the decreasing trend in $\theta_f$ creates a lag between the optima and the mean population values, because adaptation is slower than the rate of change. However, the population can still survive with such a rate if the difference between the optima and the means become constant. On a very long scale (~2500 years) it is what happens in this case, the population maintain by changing its phenotype fast enough to track the optima variation (data not shown).
+As expected, the decreasing trend in $\theta_f$ creates a lag between the optima and the mean population values, because adaptation is slower than the rate of change. However, the population can still survive with such a rate if the difference between the optima and the means become constant. On a very long scale (2500 years) it is what happens in this case, the population maintain by changing its phenotype fast enough to track the optima variation (data not shown).
 
 \subsection*{Estimation of the fluctuations}
 
@@ -63,12 +62,12 @@ As expected, the decreasing trend in $\theta_f$ creates a lag between the optima
 	\label{fig:thetaf}
 \end{figure}
 
-From 6 localities (map \autoref{fig:thetaf} bottom left) of \textsc{PHENOFIT} data, we computed $\theta_f$ values at these locations (top 3 rows of \autoref{fig:thetaf}). For the 6 sites, predicted $\theta_f$ decrease with time, it is more precocious as time passes. This observation matches the advance of phenology observed in the literature because of climate change.
+In 6 localities (map \autoref{fig:thetaf} bottom left) using \textsc{PHENOFIT} output, we computed $\theta_f$ values at these locations (top 3 rows of \autoref{fig:thetaf}). For the 6 sites, predicted $\theta_f$ decrease with time, it is more precocious as time passes. This observation matches the advance of phenology observed in the literature because of climate change.
 
-Over the general trend, we observe a small amplitude variation around 20 days, corresponding to year to year change in $\theta_f$ and some dramatic decreases in its values, sometimes reaching negative values (For example at BIC site in 1976). The frequency of these events increase with time as they become \"normal\" after 2050 for all sites. Note that those event are biased towards the decrease of $\theta_f$, as there is no equivalent dramatic increases.
+Over the general trend, we observe a small amplitude variation (with a standard deviation of $9.6$ \SI{\day}), corresponding to year to year change in $\theta_f$ and some dramatic decreases in its values, sometimes reaching negative values (For example at BIC site in 1976). The frequency of these events increase with time as they become common after 2050 for all sites. Note that those events are biased towards the decrease of $\theta_f$, as there is no equivalent dramatic increases.
 
-The negative values of $\theta_f$ computed in \autoref{fig:thetaf}, may seem striking as there is no such thing as a negative bud-burst date! However, as bottom right panel of \autoref{fig:thetaf} shows, we can have negative value of $\theta_f$ and still have achievable phenotypes. And if $\theta_f$ is very negative for a given year (less than -100 in 2048 for LAB), it means that will be no reproduction this year.
+The negative values of $\theta_f$ computed in \autoref{fig:thetaf}, may seem striking as there is no such thing as a negative bud-burst date! It indicates strong directional selection to shorten bud-burst those years with very little sign of quadratic selection on that trait. As bottom right panel of \autoref{fig:thetaf} shows, we can have negative value of $\theta_f$ and still have achievable phenotypes. If $\theta_f$ is very negative for a given year (less than -100 in 2048 for LAB), it means there will be no reproduction this year (flat tail of blue curve, bottom right oanel \autoref{fig:thetaf}).
 
 We excluded those extreme events to estimate the trend in the variation of $\theta_f$ (see~\nameref{sec:M&M}). Using linear regression on $\theta_f$ with time, we found a rate of \SI{-0.15}{\day\per\year}, with normal residuals having a variance of \SI{93.1}{\day\squared} (data not shown, $R^2=0.2435$, $p=1.185\text{\sc{e}-}7$, $F=32.5$ with $101$ d.f.).
 
-We investigated to know if there was a break between years modeled from real data by \textsc{PHENOFIT} (before 2001) and years modeled using climate models with climate change included (from 2001). We performed the same regression as above, without taking apart the extreme values, for all sites, splitting the data before 2001 and from 2001. Taking all years, for each site.
+We investigated whether there was a break between years modeled from real data by \textsc{PHENOFIT} (before 2001) and years modeled using climate models with climate change included (from 2001). We performed the same regression as above, without taking apart the extreme values, for all sites, splitting the data before 2001 and from 2001. Taking all years, for each site.
