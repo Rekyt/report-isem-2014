@@ -18,7 +18,7 @@ We used a previously developed model with stage-structure \citetext{Sandell 2014
 	\end{pmatrix}
 \end{equation}
 
-, where $a_{ij}$ describes the contribution of stage $j$ individuals to stage $i$ the next year. With given initial conditions we can compute the number of individuals in the two stages by iterating matrix multiplication by $A$.
+, where $a_{ij}$, the transition rate, describes the contribution of stage $j$ individuals to stage $i$ the next year. With given initial conditions we can compute the number of individuals in the two stages by iterating matrix multiplication by $A$.
 
 We implemented density-dependence in this population, so that the population would not continuously increase (see \autoref{fig:dd}). We assumed seed germination and survival parameter $s_{0}$ declined with increasing density of mature and immature competitors using a Beverton-Holt function to avoid chaotic behaviors \citep{caswell_matrix_2001}:
 \begin{equation}
@@ -66,23 +66,23 @@ We obtain similar expressions for $\overline{f_1}$ and $\overline{f_2}$.
 
 \subsection*{Iterations at each time step}
 
-Assuming the phenotype has a Gaussian distribution,  the mean genotypic value of matures and immatures at the next timestep is given by (\citealt{barfield_evolution_2011} Eq.5) :
+Assuming the phenotype has a Gaussian distribution,  the mean genotypic value of matures and immatures at the next time step is given by (\citealt{barfield_evolution_2011} Eq.5) :
 
 \begin{subequations}
 	\begin{align}
 		\label{eq:genotypic}
-		\overline{g_{I}}' &= (c_{I M} \overline{g_{M}} + c_{I I} \overline{g_{I}}) 
+		\overline{g_{I}}' &= (c_{I M} \overline{g_{M}} + c_{I I} \overline{g_{I}}) + 
 			(c_{I M} G_M \beta_{a_{IM}} + c_{I I} G_I \beta_{a_{II}}) \\
-		\overline{g_{M}}' &=	 (c_{M I} \overline{g_{I}} + c_{M M} \overline{g_{M}}) 
+		\overline{g_{M}}' &=	 (c_{M I} \overline{g_{I}} + c_{M M} \overline{g_{M}})  +
 				(c_{M I} G_I \beta_{a_{MI}} + c_{M M} G_M \beta_{a_{MM}})
 	\end{align}
 \end{subequations}
 
-With $c_{ij}$ defined as in \citep{barfield_evolution_2011}, that is $c_{ij} = \frac{n_j \overline{a_{ij}}}{n_i'}$, it is the contribution of stage $j$ individuals to next years pool of stage $i$ individuals, as a fraction of $i$ individuals at the next time step $n_i'$; and $\beta_{a_{II}}$ the gradient of selection as $\beta_{a_{IM}} = \frac{\partial \ln \overline{a_{IM}}}{\partial \overline{z_{M}}}$.
+with $c_{ij} = \frac{n_j \overline{a_{ij}}}{n_i'}$, the contribution of stage $j$ individuals to next years pool of stage $i$ individuals, as a fraction of $i$ individuals at the next time step $n_i'$; and $\beta_{a_{ij}}$ the selection gradient as $\beta_{a_{ij}} = \frac{\partial \ln \overline{a_{ij}}}{\partial \overline{z}}$~\citep{barfield_evolution_2011}. The selection gradient represent the force of directional selection~\citep{lande_quantitative_1982}.
 
 The first term is a weighted average of mean genotypes contributing to this stage; while the second shows the effect of selection.
 
-A similar recursion is given in \citep{barfield_evolution_2011} for phenotypes. They depend on terms of direct transition from one stage to the other $\overline{t_{ij}}$ and births $\overline{f_{ij}}$ (and we have $\overline{a_{ij}} = \overline{t_{ij}} + \overline{f_{ij}}$):
+A similar recursion is given in \citep{barfield_evolution_2011} for phenotypes. They depend on terms of direct transition of individuals from one stage to the other $\overline{t_{ij}}$ and events leadings to new individuals $\overline{f_{ij}}$ (and we have $\overline{a_{ij}} = \overline{t_{ij}} + \overline{f_{ij}}$):
 
 \begin{subequations}
 	\begin{align}
@@ -92,7 +92,7 @@ A similar recursion is given in \citep{barfield_evolution_2011} for phenotypes. 
 	\end{align}
 \end{subequations}
 
-With $\beta_{t_{II}}$ the gradient of selection defined as above in \autoref{eq:genotypic}, i.e. $\beta_{t_{II}} = \frac{\partial \ln \overline{t_{II}}}{\partial \overline{z_I}}$; $c_{ij}^t$ the contribution by direct transition of stage $j$ to stage $i$ and $c_{ij}^f$ the contribution by birth.
+, with $\beta_{t_{II}}$ the gradient of selection defined as above in \autoref{eq:genotypic}, i.e. $\beta_{t_{II}} = \frac{\partial \ln \overline{t_{II}}}{\partial \overline{z_I}}$; $c_{ij}^t = \frac{n_j \overline{t_{ij}}}{n_i'}$ the contribution by direct transition of stage $j$ to stage $i$ and $c_{ij}^f = \frac{n_j \overline{f_{ij}}}{n_i'}$ the contribution by birth.
 
 \subsection*{Approximation under weak selection}
 
