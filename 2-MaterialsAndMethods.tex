@@ -46,7 +46,7 @@ We supposed certain life-history traits for each individual - $s_{I}$ immature s
 \end{equation}
 
 
-, $\theta_s$ is the optimal bud-burst date for survival, i.e. phenotype where $s_I$ is its maximum $s_I(\theta_s)$; $\omega_s$ is the width of the Gaussian function, its inversely related to selection intensity: with small $\omega_s$ values, only a restricted range of bud-burst dates would have important survival rates, a strong selection for specific dates. $f_1$ and $f_2$ have similar expressions, but the optimal bud-burst date $\theta_f$ is different from $\theta_s$, $f_1$ and $f_2$ only differ by their maximum values $f_i(\theta_f)$, with $f_1$ lower than $f_2$ (see \autoref{tab:params} to have standard parameters values).
+, $\theta_s$ is the optimal bud-burst date for survival, i.e. phenotype where $s_I$ is at its maximum $s_I(\theta_s)$; $\omega_s$ is the width of the Gaussian function, its inversely related to selection intensity: with small $\omega_s$ values, only a restricted range of bud-burst dates would have important survival rates. $f_1$ and $f_2$ have similar expressions, but the optimal bud-burst date $\theta_f$ is different from $\theta_s$, $f_1$ and $f_2$ only differ by their maximum values $f_i(\theta_f)$, with $f_1$ lower than $f_2$ (see \autoref{tab:params} to have standard parameters values).
 
 The optimal trait values $\theta_s$ and $\theta_f$ differ between stages and life-history components, but trait value does not change along the life of an individual, then there is a trade-off between the two fitness components. And the evolution of the trait affects the life-history of the individual.
 
@@ -82,7 +82,24 @@ with $c_{ij} = \frac{n_j \overline{a_{ij}}}{n_i'}$, the contribution of stage $j
 
 The first term is a weighted average of mean genotypes contributing to this stage; while the second shows the effect of selection.
 
-A similar recursion is given in \citep{barfield_evolution_2011} for phenotypes. They depend on terms of direct transition of individuals from one stage to the other $\overline{t_{ij}}$ and events leadings to new individuals $\overline{f_{ij}}$ (and we have $\overline{a_{ij}} = \overline{t_{ij}} + \overline{f_{ij}}$):
+To have the formal expressions of $\beta_{a_{ij}}$ we need to compute the selection gradients on life-history components:
+\begin{equation}
+	\label{eq:selgradlfh}
+	\begin{aligned}
+	\beta_{\overline{s_I}} &= \frac{\partial \ln \overline{s_I}}{\partial \overline{z_I}} &= \frac{\theta_s - \overline{z_I}}{\omega_s + P_I} \\
+	\beta_{\overline{f_1}} &= \frac{\partial \ln \overline{f_1}}{\partial \overline{z_I}} &= \frac{\theta_f - \overline{z_I}}{\omega_f + P_I} \\
+	\beta_{\overline{f_2}} &= \frac{\partial \ln \overline{f_2}}{\partial \overline{z_M}} &= \frac{\theta_f - \overline{z_M}}{\omega_f + P_M}
+	\end{aligned}
+\end{equation}
+
+And because we have for example $\overline{a_{II}} = s_0 m \overline{f_1} + \overline{s_I} (1-m)$ we get the selection gradient:
+
+\begin{equation}
+	\label{eq:selgradaII}
+	\beta_{a_{II}} = \frac{s_0 m \overline{f_1} \beta_{\overline{f_1}} + \overline{s_I} \beta_{\overline{s_I}} (1-m)}{\overline{a_{II}}}
+\end{equation}
+
+We have a similar recursion for phenotypes \citep{barfield_evolution_2011}. They depend on terms of direct transition of individuals from one stage to the other $\overline{t_{ij}}$ and events leadings to new individuals $\overline{f_{ij}}$ (and we have $\overline{a_{ij}} = \overline{t_{ij}} + \overline{f_{ij}}$):
 
 \begin{subequations}
 	\begin{align}
@@ -159,7 +176,7 @@ To model climate-change, and especially the trend to increase temperature with t
 		\theta_i(t) &= \overline{\theta_i} + \alpha_i\epsilon(t) \\
 		\epsilon(t) &= kt + \xi_i
 	\end{aligned}
-	\right\.
+	\right.
 \end{equation}
 
 With $k$ having a negative value, the optima decrease with time.
