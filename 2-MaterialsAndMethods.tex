@@ -28,24 +28,37 @@ We implemented density-dependence in this population, so that the population wou
 
 with $k_{I}$ and $k_{M}$ the weights of immature ($N_{I}$) and mature ($N_{M}$) population respectively. $s_{0, max}$ is the maximum achievable $s_{0}$.
 
-\subsection*{Life-history traits}
+\subsection*{Phenotype and life-history traits}
 
-We considered certain life-history trait $s_{I}, f_{1}, f_{2}$ as gaussian for each individual such as:
+In this population we observed a single phenotype $z$: the bud-burst date. Here, bud-burst date is expressed in julian days (numbered days in the year, 1st of January being 1 in julian days). In our model, an individual is born with a given phenotype and keeps it throughout his life.
+
+We supposed certain life-history traits for each individual - $s_{I}$ immature survival, $f_1$ first reproducers fecundity and $f_2$ experienced reproducers - (see \autoref{eq:popmat}) to be Gaussian function of phenotype $z$. Thus, bud-burst date directly influence their values. They can are expressed as follow:
 
 \begin{equation}
 	\label{eq:indlht}
-	s_{I}(z) = s_{I}(\theta_{s})	\exp\left(-\frac{(z - \theta_{s})^2}{2\omega_{s}}\right)
+	\left\{
+	\begin{aligned}
+	s_{I}(z) &= s_{I}(\theta_{s})	\exp\left(-\frac{(z - \theta_{s})^2}{2\omega_{s}}\right) \\
+	f_1(z) &= f_1(\theta_{f})	\exp\left(-\frac{(z - \theta_{f})^2}{2\omega_{f}}\right) \\
+	f_2(z) &= f_2(\theta_{f})	\exp\left(-\frac{(z - \theta_{f})^2}{2\omega_{f}}\right)
+	\end{aligned}
+	\right.
 \end{equation}
 
 
-We have similar expressions for $f_1$ and $f_2$. Averaging over the population it gives:
+, $\theta_s$ is the optimal bud-burst date for survival, i.e. phenotype where $s_I$ is its maximum $s_I(\theta_s)$; $\omega_s$ is the width of the Gaussian function, its inversely related to selection intensity: with small $\omega_s$ values, only a restricted range of bud-burst dates would have important survival rates, a strong selection for specific dates. $f_1$ and $f_2$ have similar expressions, but the optimal bud-burst date $\theta_f$ is different from $\theta_s$, $f_1$ and $f_2$ only differ by their maximum values $f_i(\theta_f)$, with $f_1$ lower than $f_2$ (see \autoref{tab:params} to have standard parameters values).
+
+The optimal trait values $\theta_s$ and $\theta_f$ differ between stages and life-history components, but trait value does not change along the life of an individual, then there is a trade-off between the two fitness components. And the evolution of the trait affects the life-history of the individual.
+
+If we want to compute mean transition rate $\overline{a_{ij}}$, we need to average $s_I$, $f_1$ and $f_2$ (ex: $\overline{a_{IM}} = s_0 \overline{f_2}$):
 
 \begin{equation}
 	\label{eq:poplht}
+	
 	\overline{s_{I}}(\overline{z_{I}}) = s_{I}(\theta_{s}) \sqrt{\frac{\omega_{s}}{\omega_{s}+P_{I}}}	\exp\left(-\frac{(\overline{z_{I}} - \theta_{s})^2}{2(\omega_{s}+P_{I})}\right)
 \end{equation}
 
-Again, we obtain similar expressions for $\overline{f_1}$ and $\overline{f_2}$.	
+, with $P_I$ the phenotypic variance in the immature stage. Again, we obtain similar expressions for $\overline{f_1}$ and $\overline{f_2}$.	
 
 \subsection*{Iterations at each time step}
 
