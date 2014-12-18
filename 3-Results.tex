@@ -31,8 +31,9 @@ As we had partially correlated noises in our population (see \autoref{tab:params
 
 \subsection*{Trend in the environment}
 
-We implemented a decreasing trend in $\theta_f$ with fluctuations (\autoref{fig:trend}) to mimic climate change.
-We averaged values over 15 simulations for life-history traits while showed a single simulation for the phenotype (respectively bottom and top panels \autoref{fig:trend}).
+We implemented a decreasing trend in $\theta_f$ with fluctuations (\autoref{fig:trend}) to mimic climate change. We simulated both a linear trend and a linear trend with fluctuations in optima variation (respectively solid and dashed lines in \autoref{fig:trend}).
+
+The phenotype in the population decreases as the optima decrease, but much slower, whether with fluctuations or not. The mean phenotype in the immature stage $\overline{z_I}$ seem to vary in the same fashion with and without fluctuations, while the mean phenotypes among mature individuals $\overline{z_M}$ are almost indistinguishable in the two environments, $\overline{z_M}$ under fluctuations (dashed line) is a little bit over $\overline{z_M}$ without them (solid line). We implemented the approximation $\overline{z_\epsilon}$ from \citep{engen_evolution_2011}, it seems to follow the variations in a similar fashion as the mean phenotype in the population.
 
 $s_I$ has an interesting behavior, it first increases, reaches a maximum, then decreases. The decreasing trend in optima variation causes at first the mean population phenotype to move closer to $\theta_s$, thus maximizing $s_I$ values when it crosses $\theta_s$ line, as soon as it moves beyond $s_I$ starts to decrease again. The fluctuations seem to decrease $s_I$ (mean difference of 0.5), it may be a cost associated with the variance of optimum fluctuations, the optimum is often under the mean population value.
 
