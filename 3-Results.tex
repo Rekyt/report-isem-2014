@@ -16,7 +16,7 @@ Within the density-dependent model the mean immature phenotype $\overline{z_I}$ 
 \begin{figure}[ht!]
 	\centering
 	\includegraphics[scale=1]{Figures/DDphenopop.pdf}
-	\caption{\textbf{Effect of density-dependence on phenotypes and populations}. \textbf{Left panel}: Phenotype variations in population ($\overline{z_I}, \overline{z_M}$) with their corresponding genotypic values ($\overline{g_I}, \overline{g_M}$) all starting from $z = 116$, and the approximation given by \autoref{eq:zweak}; \textbf{right panel}: demography, number of immature individuals ($N_I$, red), number of mature individuals ($N_M$, blue). Starting from Stable-Stage Distribution (SSD) in constant environment, note the logarithmic scale used.}
+	\caption{\textbf{Effect of density-dependence on phenotypes and populations}. \textbf{Top}: Phenotype variations in population ($\overline{z_I}, \overline{z_M}$, starting from $z = 116$) with their corresponding genotypic values ($\overline{g_I}, \overline{g_M}$), and the approximation given by \autoref{eq:zweak}; \textbf{Bottom}: Population, number of immature individuals ($N_I$, red), number of mature individuals ($N_M$, blue). Starting from Stable-Stage Distribution (SSD) in constant environment. \textbf{No DD} means we used the model without density-dependence, \textbf{DD} means we implemented density-dependence through $s_0$ (see \autoref{eq:ddfunc}).}
 	\label{fig:dd}
 \end{figure}
 
@@ -29,7 +29,7 @@ Explain in the text correlation of $z_{I}$ with $\theta_{s}(t)$
 \begin{figure}[ht!]
 	\centering
 	\includegraphics[scale=1]{Figures/PhenoLHTwithCorr.pdf}
-	\caption{\textbf{Effect of the correlation of fluctuations on phenotypes and life-history traits}. Correlation coefficient $\rho_{N}$ values of noises are indicated at the the top of each column. Phenotype and approximations are shown in julian days, $\overline{z_\epsilon}$ is the approximation from \autoref{eq:zfluct}. Mean fecundities are in number of seeds produced. The two bottom rows are survival rates, the top one is $\overline{s_I}$ the mean survival of immature individuals, the bottom one is $s_0$ the rate of survival and germination of seeds (see~\nameref{sec:M&M}).}
+	\caption{\textbf{Fluctuating optima against constant environment}. \textbf{Top:} comparison of phenotypes from simulations with constant or fluctuating optima, $\overline{z_{eq}}$ is the approximation shown in \autoref{eq:zweak}. \textbf{Bottom:} (\textbf{Left}) life-history traits in constant or fluctuating environment, (\textbf{Right}) population in constant or fluctuating environment, $N_I$ is the number of immature individuals and $N_M$ the number of mature individuals, population started from the stable stage distribution. \textbf{Solid lines:} values in constant environment, \textbf{Dashed lines:} in fluctuating environment.}
 	\label{fig:corr}
 \end{figure}
 
@@ -38,7 +38,7 @@ Explain in the text correlation of $z_{I}$ with $\theta_{s}(t)$
 \begin{figure}[ht!]
 	\centering
 	\includegraphics[scale=1]{Figures/Trend.pdf}
-	\caption{\textbf{Mixed influences of trend and fluctuations on the population}. \textbf{Top panel}: Phenotype evolution with and without fluctuations, results from a single simulation; \textbf{Bottom panel:} (\textbf{Left}) Life-History Traits evolution depending on fluctuations, survival are rates while fecundities are expressed in produced seeds; (\textbf{Right}) demography. \textbf{With fluct.}: fluctuating optima with a linear trend, \textbf{No fluct.} linearly decreasing optima. Results shown with fluctuations were averaged over 15 independent simulations for demography and life-history traits.}
+	\caption{\textbf{Mixed influences of trend and fluctuations on the population}. \textbf{Top:} Phenotype evolution with and without fluctuations, results from a \textbf{single} simulation; \textbf{Bottom:} (\textbf{Left}) life-history traits evolution; (\textbf{Right}) demography. \textbf{Solid lines:} (\textbf{No fluct.}) linearly decreasing optima with time; \textbf{Dashed lines:} \textbf{With fluct.} fluctuating decreasing optima. Life-history traits and population were averaged over 15 independent population to buffer the stochasticity of simulations.}
 	\label{fig:trend}
 \end{figure}
 
@@ -58,7 +58,7 @@ As expected, the decreasing trend in $\theta_f$ creates a lag between the optima
 \begin{figure}[ht!]
 	\centering
 	\includegraphics[scale=1]{Figures/optsmaps.pdf}
-	\caption{\textbf{$\theta_{f}$ estimations from PHENOFIT data}. Top 3 rows: estimations of $\theta_f$ for each study site see \nameref{sec:M&M} for details. Bottom left panel: map of the study sites. Bottom right panel: Theoretical fecundity functions with parameters from~\autoref{tab:params} with values of $\theta_f$ equals to $100$, $20$ and $-20$, solid lines indicate achievable phenotype, dashed lines show theoretical curves but unreachable phenotypes.}
+	\caption{\textbf{$\theta_{f}$ estimations from PHENOFIT data}. \textbf{Top:} estimations of $\theta_f$ for each study site (see \nameref{sec:M&M} for details). \textbf{Bottom:} (\textbf{Left}) map of the study sites; (\textbf{Right}) Theoretical fecundity functions with parameters from~\autoref{tab:params} with values of $\theta_f$ equals to $100$, $20$ and $-20$, solid lines indicate achievable phenotype, dashed lines show theoretical curves but unreachable phenotypes.}
 	\label{fig:thetaf}
 \end{figure}
 
@@ -70,4 +70,4 @@ The negative values of $\theta_f$ computed in \autoref{fig:thetaf}, may seem str
 
 We excluded those extreme events, taking all sites together, to estimate the trend in the variation of $\theta_f$ (see~\nameref{sec:M&M}). Using linear regression on $\theta_f$ with time, we found a rate of \SI{-0.15}{\day\per\year}, with normal residuals having a variance of \SI{105}{\day\squared} (data not shown, $R^2=0.2341$, $p<2\text{\sc{e}-}16$, $F=186.7$ with $611$ d.f.).
 
-We investigated whether there was a break between years modeled from real data by \textsc{PHENOFIT} (before 2001) and years modeled using climate models with climate change included (from 2001). We performed the same regression as above ($\theta_f$ with time), without taking apart the extreme values, for all sites, splitting the data before 2001 and from 2001 (data no shown). For each site, the slope estimates was higher with extreme events
+We investigated whether there was a break between years modeled from real data by \textsc{PHENOFIT} (before 2001) and years modeled using climate models with climate change included (from 2001). We performed the same regression as above ($\theta_f$ with time), without taking apart the extreme values, for all sites, splitting the data before 2001 and from 2001 (data no shown). For each site, the slope estimates was higher with extreme events.
