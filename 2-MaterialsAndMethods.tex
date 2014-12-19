@@ -20,7 +20,7 @@ We used a previously developed model with stage-structure \citetext{Sandell 2014
 
 , where $a_{ij}$, the transition rate, describes the contribution of stage $j$ individuals to stage $i$ the next year. With given initial conditions we can compute the number of individuals in the two stages by iterating matrix multiplication by $A$.
 
-We implemented density-dependence in this population, so that the population would not continuously increase (see \autoref{fig:dd}). We assumed seed germination and survival parameter $s_{0}$ declined with increasing density of mature and immature competitors using a Beverton-Holt function to avoid chaotic behaviors \citep{caswell_matrix_2001}:
+I implemented density-dependence in this model, so that the population would not continuously increase (see \autoref{fig:dd}). I assumed seed germination and survival parameter $s_{0}$ declined with increasing density of mature and immature competitors using a Beverton-Holt function \citep{caswell_matrix_2001}:
 \begin{equation}
 	\label{eq:ddfunc}
 	s_{0} = \frac{s_{0, max}}{1 + k_{I} N_{I} + k_{M} N_{M}}
@@ -30,9 +30,9 @@ with $k_{I}$ and $k_{M}$ the weights of immature ($N_{I}$) and mature ($N_{M}$) 
 
 \subsection*{Phenotype and life-history traits}
 
-In this population we observed a single phenotype $z$: the bud-burst date. Here, bud-burst date is expressed in julian days (numbered days in the year, 1st of January being 1 in julian days). In our model, an individual is born with a given phenotype and keeps it throughout his life.
+We model the evolution of a phenotypic trait, e.g. the date at which first leafs appear on a tree, $z$ the bud-burst date. In our model, an individual is born with a given phenotype and keeps it throughout its life.
 
-We supposed certain life-history traits for each individual - $s_{I}$ immature survival, $f_1$ first reproducers fecundity and $f_2$ experienced reproducers - (see \autoref{eq:popmat}) to be Gaussian function of phenotype $z$. Thus, bud-burst date directly influence their values. They can are expressed as follow:
+Too early bud-burst can compromize the survival of young immature trees and the fecundity of mature trees because of the risk of frost. Too late bud-burst also affects the same traits because the bad season arrives before enough photosynthetates have been accumulated to guarantee survival of young trees and maturation of fruits. We assume that the survival of large mature trees is less sensitive to variation of phenology. We therefore supposed that for each individual - $s_{I}$ immature survival, $f_1$ first reproducers fecundity and $f_2$ experienced reproducers - (see \autoref{eq:popmat}) to be Gaussian function of phenotype $z$. Thus, bud-burst date directly influence their values. They are expressed as follow:
 
 \begin{equation}
 	\label{eq:indlht}
@@ -48,14 +48,14 @@ We supposed certain life-history traits for each individual - $s_{I}$ immature s
 
 , $\theta_s$ is the optimal bud-burst date for survival, i.e. phenotype where $s_I$ is at its maximum $s_I(\theta_s)$; $\omega_s$ is the width of the Gaussian function, its inversely related to selection intensity: with small $\omega_s$ values, only a restricted range of bud-burst dates would have important survival rates. $f_1$ and $f_2$ have similar expressions, but the optimal bud-burst date $\theta_f$ is different from $\theta_s$, $f_1$ and $f_2$ only differ by their maximum values $f_i(\theta_f)$, with $f_1$ lower than $f_2$ (see \autoref{tab:params} to have standard parameters values).
 
-The optimal trait values $\theta_s$ and $\theta_f$ differ between stages and life-history components, but trait value does not change along the life of an individual, then there is a trade-off between the two fitness components. And the evolution of the trait affects the life-history of the individual.
+The optimal trait values $\theta_s$ and $\theta_f$ can differ between stages and life-history components, but trait value does not change along the life of an individual, then there is a trade-off between the two fitness components fecundity and immature survival. The evolution of the trait then affects the population dynamics through the life-history of the individuals in the population.
 
 If we want to compute mean transition rate $\overline{a_{ij}}$, we need to average $s_I$, $f_1$ and $f_2$ (ex: $\overline{a_{IM}} = s_0 \overline{f_2}$):
 
 \begin{equation}
 	\mathrm{E}[s_I] = \overline{s_I} = \int p_I(z)s_I(z)\,\text{d}z
 \end{equation}
-, with $p_I(z)$ the distribution of $z$ in the immature stage, as we study a quantitative trait we suppose $p_I$ has a Gaussian distribution with mean $\overline{z_I}$ and width $P_I$ the phenotypic variance in the immature stage~\citep{lande_quantitative_1982}. We end with the following expression for $\overline{s_I}$:
+, with $p_I(z)$ the distribution of $z$ in the immature stage. We suppose $p_I$ has a Gaussian distribution with mean $\overline{z_I}$ and width $P_I$ the phenotypic variance in the immature stage~\citep{lande_quantitative_1982}. We end with the following expression for $\overline{s_I}$:
 
 \begin{equation}
 	\label{eq:poplht}
@@ -66,7 +66,7 @@ We obtain similar expressions for $\overline{f_1}$ and $\overline{f_2}$.
 
 \subsection*{Iterations at each time step}
 
-Assuming the phenotype has a Gaussian distribution,  the mean genotypic value of matures and immatures at the next time step is given by (\citealt{barfield_evolution_2011} Eq.5) :
+Assuming the phenotype has a Gaussian distribution,  the mean genotypic value of matures and immatures at the next time step is given by (\citealt{barfield_evolution_2011} Eq.5, applied to the current models) :
 
 \begin{subequations}
 	\begin{align}
@@ -78,7 +78,7 @@ Assuming the phenotype has a Gaussian distribution,  the mean genotypic value of
 	\end{align}
 \end{subequations}
 
-with $c_{ij} = \frac{n_j \overline{a_{ij}}}{n_i'}$, the contribution of stage $j$ individuals to next years pool of stage $i$ individuals, as a fraction of $i$ individuals at the next time step $n_i'$; and $\beta_{a_{ij}}$ the selection gradient as $\beta_{a_{ij}} = \frac{\partial \ln \overline{a_{ij}}}{\partial \overline{z}}$~\citep{barfield_evolution_2011}. The selection gradient represent the force of directional selection~\citep{lande_quantitative_1982}.
+with $c_{ij} = \frac{n_j \overline{a_{ij}}}{n_i'}$, the contribution of stage $j$ individuals to next years pool of stage $i$ individuals, as a fraction of $i$ individuals at the next time step $n_i'$; and $\beta_{a_{ij}}$ the selection gradient as $\beta_{a_{ij}} = \frac{\partial \ln \overline{a_{ij}}}{\partial \overline{z}}$~\citep{barfield_evolution_2011}. The selection gradient represents the force of directional selection, and together with the genetic variance for the trait ($G$), is used to predict the change in mean phenotype due to the response to selection~\citep{lande_quantitative_1982}.
 
 The first term is a weighted average of mean genotypes contributing to this stage; while the second shows the effect of selection.
 
@@ -93,14 +93,14 @@ To have the formal expressions of $\beta_{a_{ij}}$ we need to compute the select
 	\end{aligned}
 \end{equation}
 
-And because we have for example $\overline{a_{II}} = s_0 m \overline{f_1} + \overline{s_I} (1-m)$ we get the selection gradient:
+Because we have for example $\overline{a_{II}} = s_0 m \overline{f_1} + \overline{s_I} (1-m)$ we get the selection gradient:
 
 \begin{equation}
 	\label{eq:selgradaII}
 	\beta_{a_{II}} = \frac{s_0 m \overline{f_1} \beta_{\overline{f_1}} + \overline{s_I} \beta_{\overline{s_I}} (1-m)}{\overline{a_{II}}}
 \end{equation}
 
-We have a similar recursion for phenotypes \citep{barfield_evolution_2011}. They depend on terms of direct transition of individuals from one stage to the other $\overline{t_{ij}}$ and events leadings to new individuals $\overline{f_{ij}}$ (and we have $\overline{a_{ij}} = \overline{t_{ij}} + \overline{f_{ij}}$):
+We have a similar recursion for phenotypes \citep{barfield_evolution_2011}. We need to distinguish direct transitions of individuals from one stage to the other $\overline{t_{ij}}$ and events leading to new individuals $\overline{f_{ij}}$ (note $\overline{a_{ij}} = \overline{t_{ij}} + \overline{f_{ij}}$), because in the first case the phenotype remain unchanged while in the second only the genoytpe is inherited:
 
 \begin{subequations}
 	\begin{align}
@@ -110,11 +110,11 @@ We have a similar recursion for phenotypes \citep{barfield_evolution_2011}. They
 	\end{align}
 \end{subequations}
 
-, with $\beta_{t_{II}}$ the gradient of selection defined as above in \autoref{eq:genotypic}, i.e. $\beta_{t_{II}} = \frac{\partial \ln \overline{t_{II}}}{\partial \overline{z_I}}$; $c_{ij}^t = \frac{n_j \overline{t_{ij}}}{n_i'}$ the contribution by direct transition of stage $j$ to stage $i$ and $c_{ij}^f = \frac{n_j \overline{f_{ij}}}{n_i'}$ the contribution by birth.
+, with $\beta_{t_{ij}}$ the gradient of selection defined as above in \autoref{eq:genotypic}, i.e. $\beta_{t_{ij}} = \frac{\partial \ln \overline{t_{ij}}}{\partial \overline{z}}$; $c_{ij}^t = \frac{n_j \overline{t_{ij}}}{n_i'}$ the contribution by direct transition of stage $j$ to stage $i$ and $c_{ij}^f = \frac{n_j \overline{f_{ij}}}{n_i'}$ the contribution by birth.
 
 \subsection*{Approximation under weak selection}
 
-Under weak selection, the mean phenotype at equilibrium in the population $\overline{z}$ follows in constant environment \citep{engen_evolution_2011}:
+Under weak selection, the mean phenotype at equilibrium in the population $\overline{z}$ follows in a constant environment \citep{engen_evolution_2011}:
 
 \begin{equation}
 	\label{eq:zweak}
@@ -133,11 +133,11 @@ Under weak selection, the mean phenotype at equilibrium in the population $\over
 	\end{equation}
 \end{subequations}
 
-$\gamma_f$ and $\gamma_s$ represent the respective weight of each of the optimum in the trade-off between $\theta_f$ and $\theta_s$ for $\overline{z_{eq}}$. Indeed, if $\theta_f = \theta_s$ then $\overline{z_{eq}} = \theta_f = \theta_s$. But if $\theta_f \neq \theta_s$, then the mean phenotype on the trade-off depends on $\gamma_f$ and $\gamma_s$ and the ratio between them.
+$\gamma_f$ and $\gamma_s$ represent the respective weight of each of the optimum in the trade-off between $\theta_f$ and $\theta_s$ for $\overline{z_{eq}}$. Indeed, if $\theta_f = \theta_s$ then $\overline{z_{eq}} = \theta_f = \theta_s$. But if $\theta_f \neq \theta_s$, then the position of the mean phenotype depends on $\gamma_f$ and $\gamma_s$.
 
 \subsection*{Fluctuating optimums}
 
-During my internship, I tried to mimic environmental fluctuations, by making the optima fluctuate as such:
+I introduced environmental fluctuations in the model through the optima:
 \begin{equation}
 \left\{
 	\begin{aligned}
@@ -147,7 +147,7 @@ During my internship, I tried to mimic environmental fluctuations, by making the
 \right.
 \end{equation}
 
-$\alpha_i$ is the sensitivity of $\theta_i$ to noise $\xi_i$. $\xi_f$ and $\xi_s$ are noise vectors drawn at each time step from a bi-variate normal distribution with respectively $\sigma_f^2$ and $\sigma_s^2$ variances and correlation $\rho_N$. Thus we get normal fluctuations, correlated with a correlation coefficient of $\rho_N$.
+$\alpha_i$ is the sensitivity of $\theta_i$ to noise $\xi_i$. $\xi_f$ and $\xi_s$ are noise vectors drawn at each time step from a bi-variate normal distribution with respectively $\sigma_f^2$ and $\sigma_s^2$ variances and correlation $\rho_N$.
 
 Under varying environment we get an another approximation under weak selection from \citep{engen_evolution_2011} describing the change of mean phenotype:
 
@@ -168,7 +168,7 @@ We see that the change in the mean phenotype depends on the sensitivity of the o
 
 \subsection*{Trend in change}
 
-To model climate-change, and especially the trend to increase temperature with time, we included a trend in the variation of the optima. The optima still experience fluctuations as above they linearly vary with time:
+To model climate-change, and especially the trend of increasing temperature with time, we included a trend in the variation of the optima:
 
 \begin{equation}
 	\label{eq:kt}
@@ -180,20 +180,20 @@ To model climate-change, and especially the trend to increase temperature with t
 	\right.
 \end{equation}
 
-With $k$ having a negative value, the optima decrease with time.
+With $k$ having a negative value, the optima tend to decrease with time.
 
 \subsection*{\textsc{PHENOFIT} data}
 
 \textsc{PHENOFIT} is a phenology model including several sub-models, from environmental and phenological data it simulates the survival and reproduction of an average tree to predict its range~\citep{morin_tree_2008}.
 
- We used output from \textsc{PHENOFIT} (simulations performed by A. Duputié) from 1950 to 2100 for the sessile oak (\textit{Quercus petraea}) about predicted bud burst date and predicted fitnesses in 6 localities (see \autoref{fig:thetaf}). We had fitness predictions for phenotype around the modeled date (a range of 21 days). From these data we predicted the optima fluctuations. Considering fecundity $f$ as a Gaussian function around this date with the same form as $f_1$ in \autoref{eq:poplht}:
+ We used output from \textsc{PHENOFIT} (simulations performed by A. Duputié) from 1950 to 2100 for the sessile oak (\textit{Quercus petraea}) about predicted bud burst date and predicted fitnesses in 6 localities (see \autoref{fig:thetaf}). We had fitness and fecundity predictions for phenotypes around the modeled date (a range of 21 days). From these data we predicted the optima fluctuations. Considering fecundity $f$ as a Gaussian function around this date with the same form as $f_1$ in \autoref{eq:poplht}:
 
 \begin{equation}
 	\label{eq:beta1}
 	\beta = \frac{\partial \ln f}{\partial \overline{z}} = \frac{\theta_f - \overline{z}}{\omega_f + \sigma_z^2}
 \end{equation}
 
-Using \citep{lande_measurement_1983}, with $z$ Gaussian, $p(z)$ the distribution of $z$ in the population, $f(z)$ the fitness associated with $z$ and $\overline{f}$ the mean fitness in the population, we computed selection gradients from PHENOFIT simulation outputs as::
+Using \citep{lande_measurement_1983}, with $z$ Gaussian, $p(z)$ the distribution of $z$ in the population, $f(z)$ the fitness associated with $z$ and $\ovrline{f}$ the mean fitness in the population, we computed selection gradients from PHENOFIT simulation outputs as::
 
 \begin{equation}
 	\label{eq:beta2}
@@ -212,7 +212,7 @@ In our estimations we considered $p(z)$ to be Gaussian around the modeled date b
 
 All statistical analyses were made using R~\citep{R_2014}, graphics were drawn using ggplot2~\citep{ggplot2_2009}, data were handled using dplyr~\citep{dplyr_2014}.
 
-To estimate the trend of the $\theta_f$ variations, we considered a trend model with three components: a general decreasing linear trend, a white noise component with a constant variance and a more dramatic noise leading to "catastrophic" events, with negative $\theta_f$ values.
+To estimate the trend of the $\theta_f$ variations, we considered a trend model with three components: a general decreasing linear trend, a white noise component with a constant variance and a more dramatic noise leading to "catastrophic" events, with low $\theta_f$ values.
 
 The regular noise and the trend were estimated excluding those catastrophic events, we kept only value of $\theta_f$ over 60, which is the lower bound of the realizable range of bud burst date of oak trees. Then we performed a linear regression between values of $\theta_f$ and time, giving us an estimation of $k$ from \autoref{eq:kt}. Analyzing the residuals gives us the variance of $\alpha_f \xi_f$ from the same equation.
 
