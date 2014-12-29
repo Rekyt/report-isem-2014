@@ -3,6 +3,13 @@
 
 \subsection*{Constant environment and density-dependence}
 
+\begin{figure}[ht!]
+	\centering
+	\includegraphics[scale=1]{Figures/DDphenopop.pdf}
+	\caption{\textbf{Effect of density-dependence on phenotypes and populations}. \textbf{Top}: Phenotype variations in population ($\overline{z_I}, \overline{z_M}$, starting from $z = 116$) with their corresponding genotypic values ($\overline{g_I}, \overline{g_M}$), and the approximation given by \autoref{eq:zweak}; \textbf{Bottom}: Population, number of immature individuals ($N_I$, red), number of mature individuals ($N_M$, blue). Starting from Stable-Stage Distribution (SSD) in constant environment. \textbf{No DD} means we used the model without density-dependence, \textbf{DD} means we implemented density-dependence through $s_0$ (see \autoref{eq:ddfunc}). Here, bud-burst date is expressed in julian days (numbered days in the year, 1st of January being 1 in julian days).}
+	\label{fig:dd}
+\end{figure}
+
 We used the previously developed model in \citetext{Sandell 2014} and simulated (see~\autoref{fig:dd}) a tree population for 150 years in a constant environment, with and without density-dependence on $s_0$, assess the effects of a more realistic demography.
 
 As expected, density-dependence allows regulating the population (\autoref{fig:dd} right panel), as the number of mature and immature individuals seem to converge respectively to $18000$ and $10000$ individuals, while without density-dependence the population is exponentially growing.
@@ -14,6 +21,13 @@ The genotypic values, $\overline{g_I}$ and $\overline{g_M}$ (respectively gray a
 The mean immature phenotype $\overline{z_I}$ converge quicker than the mean mature phenotype $\overline{z_M}$ to $\overline{z_{eq}}$. High mature trees survival in our simulations makes it long to replace them with a different genotype and phenotype. To make $\overline{z_M}$ closer to $\overline{z_{eq}}$, immature individuals with a phenotype closer to $\overline{z_{eq}}$ need to survive long enough to mature and outnumber initial mature individuals with phenotype further from $\overline{z_{eq}}$.
 
 \subsection*{Fluctuating optima}
+
+\begin{figure}[ht!]
+	\centering
+	\includegraphics[scale=1]{Figures/PhenoLHTwithCorr.pdf}
+	\caption{\textbf{Fluctuating optima against constant environment}. \textbf{Top:} comparison of phenotypes from simulations with constant or fluctuating optima, $\overline{z_{eq}}$ is the approximation shown in \autoref{eq:zweak} results from single simulation. \textbf{Bottom:} (\textbf{Left}) life-history traits in constant or fluctuating environment, (\textbf{Right}) population in constant or fluctuating environment, $N_I$ is the number of immature individuals and $N_M$ the number of mature individuals, population started from the stable stage distribution. \textbf{Solid lines:} values in constant environment, \textbf{Dashed lines:} in fluctuating environment, results were averaged over 100 independent simulations.}
+	\label{fig:corr}
+\end{figure}
 
 To mimic a changing environment we made the optima fluctuate (\autoref{fig:corr}, dashed lines) and compared this model to the one in constant environment (solid lines).
 
@@ -31,6 +45,13 @@ As we had partially correlated noises in our population (see \autoref{tab:params
 
 \subsection*{Trend in the environment}
 
+\begin{figure}[ht!]
+	\centering
+	\includegraphics[scale=1]{Figures/Trend.pdf}
+	\caption{\textbf{Mixed influences of trend and fluctuations on the population}. \textbf{Top:} Phenotype evolution with and without fluctuations, results from a \textbf{single} simulation; \textbf{Bottom:} (\textbf{Left}) life-history traits evolution; (\textbf{Right}) demography. \textbf{Solid lines:} (\textbf{No fluct.}) linearly decreasing optima with time; \textbf{Dashed lines:} \textbf{With fluct.} fluctuating decreasing optima, results were averaged over 100 independent simulations.}
+	\label{fig:trend}
+\end{figure}
+
 We implemented a decreasing trend in $\theta_f$ with fluctuations (\autoref{fig:trend}) to mimic climate change. We simulated both a linear trend and a linear trend with fluctuations in optima variation (respectively solid and dashed lines in \autoref{fig:trend}).
 
 The phenotype in the population decreases as the optima decrease, but much slower, whether with fluctuations or not. The mean phenotype in the immature stage $\overline{z_I}$ seem to vary in the same fashion with and without fluctuations, while the mean phenotypes among mature individuals $\overline{z_M}$ are almost indistinguishable in the two types of environments, $\overline{z_M}$ under fluctuations (dashed line) is a little bit over $\overline{z_M}$ without them (solid line). We implemented the approximation $\overline{z_\epsilon}$ from \citep{engen_evolution_2011}, it seems to follow the variations in a similar fashion as the mean phenotype of the mature individuals.
@@ -43,7 +64,16 @@ After a certain number of years, population is lower in environments with trends
 
 As expected, the decreasing trend in $\theta_f$ creates a lag between the optima and the mean population values, because adaptation is slower than the rate of change. However, the population can still survive with such a rate if the difference between the optima and the means become constant. On a very long scale (2500 years) it is what happens in this case, the population maintains itself by changing its phenotype fast enough to track the optima variation (data not shown).
 
+\clearpage
+
 \subsection*{Estimation of the fluctuations}
+
+\begin{figure}[ht!]
+	\centering
+	\includegraphics[scale=1]{Figures/optsmaps.pdf}
+	\caption{\textbf{$\theta_{f}$ estimations from PHENOFIT data}. \textbf{Top:} estimations of $\theta_f$ for each study site (see \nameref{sec:M&M} for details), linear regression only for values >60. \textbf{Bottom:} (\textbf{Left}) map of the study sites; (\textbf{Right}) Theoretical fecundity functions with parameters from~\autoref{tab:params} with values of $\theta_f$ equals to $100$, $20$ and $-20$, solid lines indicate achievable phenotype, dashed lines show theoretical curves but unreachable phenotypes.}
+	\label{fig:thetaf}
+\end{figure}
 
 In 6 localities (map \autoref{fig:thetaf} bottom left) using \textsc{PHENOFIT} output, we computed $\theta_f$ values at these locations (top 3 rows of \autoref{fig:thetaf}). For the 6 sites, predicted $\theta_f$ decreases with time: earlier bud-burst is favored as climate warms.
 
