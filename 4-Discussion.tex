@@ -1,14 +1,24 @@
 \label{sec:Disc}
 \section*{Discussion}
 
-We modeled a stage-structured tree population using a quantitative genetics approach, with bud-burst date the studied trait varying between two optima. We used it to understand their phenotype evolution in the next 150 years. Using \textsc{PHENOFIT} simulation results we computed values for one of the optima. An increasing number of extreme events would happen in the next century.
+We modeled a stage-structured tree population using a quantitative genetics approach, with bud-burst date varying between two optima. We predicted phenotype evolution in the next 150 years. Using \textsc{PHENOFIT} simulation results we computed values for one of the optima. According to simulations, an increasing number of extreme events will happen in the next century where all fecundities will be equal to zero.
 
 As expected in the literature, we found a decreasing trend in the variation of optima, i.e. a trend to precocity of phenology \citep{aitken_adaptation_2008, ehrlen_timing_2009}. Because of the general increase in temperature, organisms advance their phenology to track their original environment.
 
-Long-lived stage structure populations don't have show strong reaction to fluctuations nor to climate change -> beware of the "buffer" effect, due to life cycle
+Genotypic ($\overline{g_i}$) and phenotypic ($\overline{z_i}$) values are different in our simulations (see~\autoref{fig:dd}); because of both stage-structure and the two optima we use.
 
-Fluctuations don't have strong effect on phenotype but on demography 
+Density-dependence pushes the equilibrium phenotype $\overline{z_{eq}}$ towards the survival optimum $\theta_s$, with higher intra-specific competition (due to~\autoref{eq:ddfunc}) it increases fitness to produce less seedlings and increase their survival than to produce more seeds with poor survival.
+	
+In constant environment with fluctuations, mean phenotypes in immature and mature stages do not show strong fluctuating pattern. Only the mean phenotype among immature individuals shows fluctuations, tracking closer the survival optimum $\theta_s$ than the survival optimum $\theta_f$. The model consider long-lived species such as trees, on average it takes 40 years for an immature to become mature, and it can live several centuries after that.
 
-Increasing number of catastrophic events
+Depending on the position of the mean phenotype in population, fluctuations may have a positive or a negative effect. If the mean phenotype is already near the optimal value, in our case near one of the optimum, the fluctuation of this optimum can only move it away from the mean phenotype—having a negative fitness impact; if the mean phenotype is fare from an optimal value, then fluctuations have a higher chance to bring it closer to the mean phenotype value—having a positive impact on fitness. According to the position of the trade-off between optima fluctuations have positive or negative consequences on fitness, there is no general pattern understandable simply by observing fluctuations.
 
-Our model -> need more realistic variations including "catastrophic events", include phenotypic plasticity, understand better the difference between breeding values and phenotypes, predict extinction time?
+With trend (\autoref{fig:trend}), counter-intuitively, there is no difference of in adaptation speed with and without fluctuations. We could have expected an additional cost of fluctuations: if the population would have tracked fluctuations closely, then a increased noise variance would have decrease fitness dramatically, since it is not the case for reasons cited above, we see no cost of fluctuations when there is a general trend in the environment.
+
+From the same case, we see the mean phenotype in immature individuals $\overline{z_I}$ changes faster than the mean phenotype in mature individuals $\overline{z_M}$, there is a difference of adaptation speed between stages. The stage-structure of our population may explain the different behaviors among the two classes. 
+
+Our model was parametrized according to the sessile oak life-cycle (\textit{Quercus petraea} spp.), using our simulations as prediction, with the estimated fluctuations and trend, the species does not go extinct in the next 150 years (\autoref{fig:trend}). Climate change has still dramatic demographic consequences, the population halving in less than 100 years. The sessile oak would be left more vulnerable demographically as it increases genetic drift and the potential force of dramatic events.
+
+Those estimations and fluctuations do not include the extreme years when all fecundities are equal to zero, i.e. the selection gradient is zero, they affect adaptation dynamics. Modeling correctly the variations of optima values would lead to more realistic behavior, it could be done by drawing the optima from an almost gaussian distribution with a very long tail towards negative values.
+
+Phenotypic plasticity should also be taken into account in a future model as it slows down genetic adaption. It has been shown to be an important component of adaptation to environmental changes~\citep{aitken_adaptation_2008}.
