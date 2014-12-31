@@ -3,7 +3,7 @@
 
 \subsection*{Population model}
 
-We used a previously developed model with stage-structure \citetext{Sandell 2014, master's thesis}. We considered a population of trees split in two classes, immature (I) and mature (M). only mature individuals reproduce. Each year, an immature individual can survive with a probability $s_I$, mature and reproduce with a probability of $m$. At the same time, a mature individual has a probability $s_M$ to survive. First-time reproducers, i.e. immature that became mature and reproduce the same year, have a fecundity of $f_1$, while experienced reproducers, those who already reproduced at least once, have a fecundity of $f_2$. Produced seeds have a probability $s_0$ to survive and join the pool of immature trees. The standard parameters set is given in (\autoref{tab:params}). The population census is just before reproduction. The population dynamics can be predicted using the following matrix \citep{caswell_matrix_2001}:
+We used a previously developed model with stage-structure \citetext{Sandell 2014, master's thesis}. We considered a population of trees split in two classes, immature (I) and mature (M). Only mature individuals reproduce. Each year, an immature individual can survive with a probability $s_I$, mature and reproduce with a probability of $m$. At the same time, a mature individual has a probability $s_M$ to survive. First-time reproducers, i.e. immature that became mature and reproduce the same year, have a fecundity of $f_1$, while experienced reproducers, those who already reproduced at least once, have a fecundity of $f_2$. Produced seeds have a probability $s_0$ to survive and join the pool of immature trees. The standard parameters set is given in (\autoref{tab:params}). The population census is just before reproduction. The population dynamics can be predicted using the following matrix \citep{caswell_matrix_2001}:
 \begin{equation}
 	\label{eq:popmat}
 	A =
@@ -15,17 +15,15 @@ We used a previously developed model with stage-structure \citetext{Sandell 2014
 	\begin{pmatrix}
 	s_{0} m f_{1} + s_{I} (1 - m) & s_{0} f_{2} \\
 	s_{M} m & s_{M}
-	\end{pmatrix}
+	\end{pmatrix},
 \end{equation}
-
-, where $a_{ij}$, the transition rate, describes the contribution of stage $j$ individuals to stage $i$ the next year. With given initial conditions we can compute the number of individuals in the two stages by iterating matrix multiplication by $A$.
+where $a_{ij}$, the transition rate, describes the contribution of stage $j$ individuals to stage $i$ the next year. With given initial conditions we can compute the number of individuals in the two stages by iterating matrix multiplication by $A$.
 
 I implemented density-dependence in this model, so that the population would not continuously increase (see \autoref{fig:dd}). I assumed seed germination and survival parameter $s_{0}$ declined with increasing density of mature and immature competitors using a Beverton-Holt function \citep{caswell_matrix_2001}:
 \begin{equation}
 	\label{eq:ddfunc}
-	s_{0} = \frac{s_{0, max}}{1 + k_{I} N_{I} + k_{M} N_{M}}
+	s_{0} = \frac{s_{0, max}}{1 + k_{I} N_{I} + k_{M} N_{M}},
 \end{equation}
-
 with $k_{I}$ and $k_{M}$ the weights of immature ($N_{I}$) and mature ($N_{M}$) population respectively. $s_{0, max}$ is the maximum achievable $s_{0}$.
 
 \subsection*{Phenotype and life-history traits}
@@ -42,31 +40,28 @@ Too early bud-burst can compromize the survival of young immature trees and the 
 	f_1(z) &= f_1(\theta_{f})	\exp\left(-\frac{(z - \theta_{f})^2}{2\omega_{f}}\right) \\
 	f_2(z) &= f_2(\theta_{f})	\exp\left(-\frac{(z - \theta_{f})^2}{2\omega_{f}}\right)
 	\end{aligned}
-	\right.
+	\right.,
 \end{equation}
-
-
-, $\theta_s$ is the optimal bud-burst date for survival, i.e. phenotype where $s_I$ is at its maximum $s_I(\theta_s)$; $\omega_s$ is the width of the Gaussian function, its inversely related to selection intensity: with small $\omega_s$ values, only a restricted range of bud-burst dates would have important survival rates. $f_1$ and $f_2$ have similar expressions, but the optimal bud-burst date $\theta_f$ is different from $\theta_s$, $f_1$ and $f_2$ only differ by their maximum values $f_i(\theta_f)$, with $f_1$ lower than $f_2$ (see \autoref{tab:params} to have standard parameters values).
+$\theta_s$ is the optimal bud-burst date for survival, i.e. phenotype where $s_I$ is at its maximum $s_I(\theta_s)$; $\omega_s$ is the width of the Gaussian function, its inversely related to selection intensity: with small $\omega_s$ values, only a restricted range of bud-burst dates would have important survival rates. $f_1$ and $f_2$ have similar expressions, but the optimal bud-burst date $\theta_f$ is different from $\theta_s$, $f_1$ and $f_2$ only differ by their maximum values $f_i(\theta_f)$, with $f_1$ lower than $f_2$ (see \autoref{tab:params} to have standard parameters values).
 
 The optimal trait values $\theta_s$ and $\theta_f$ can differ between stages and life-history components, but trait value does not change along the life of an individual, then there is a trade-off between the two fitness components fecundity and immature survival. The evolution of the trait then affects the population dynamics through the life-history of the individuals in the population.
 
 If we want to compute mean transition rate $\overline{a_{ij}}$, we need to average $s_I$, $f_1$ and $f_2$ (ex: $\overline{a_{IM}} = s_0 \overline{f_2}$):
 
 \begin{equation}
-	\mathrm{E}[s_I] = \overline{s_I} = \int p_I(z)s_I(z)\,\text{d}z
+	\mathrm{E}[s_I] = \overline{s_I} = \int p_I(z)s_I(z)\,\text{d}z,
 \end{equation}
-, with $p_I(z)$ the distribution of $z$ in the immature stage. We suppose $p_I$ has a Gaussian distribution with mean $\overline{z_I}$ and width $P_I$ the phenotypic variance in the immature stage~\citep{lande_quantitative_1982}. We end with the following expression for $\overline{s_I}$:
+with $p_I(z)$ the distribution of $z$ in the immature stage. We suppose $p_I$ has a Gaussian distribution with mean $\overline{z_I}$ and width $P_I$ the phenotypic variance in the immature stage~\citep{lande_quantitative_1982}. We end with the following expression for $\overline{s_I}$:
 
 \begin{equation}
 	\label{eq:poplht}
-	\overline{s_{I}}(\overline{z_{I}}) = s_{I}(\theta_{s}) \sqrt{\frac{\omega_{s}}{\omega_{s}+P_{I}}}	\exp\left(-\frac{(\overline{z_{I}} - \theta_{s})^2}{2(\omega_{s}+P_{I})}\right)
+	\overline{s_{I}}(\overline{z_{I}}) = s_{I}(\theta_{s}) \sqrt{\frac{\omega_{s}}{\omega_{s}+P_{I}}}	\exp\left(-\frac{(\overline{z_{I}} - \theta_{s})^2}{2(\omega_{s}+P_{I})}\right),
 \end{equation}
-
-We obtain similar expressions for $\overline{f_1}$ and $\overline{f_2}$.	
+we obtain similar expressions for $\overline{f_1}$ and $\overline{f_2}$.	
 
 \subsection*{Iterations at each time step}
 
-Assuming the phenotype has a Gaussian distribution,  the mean genotypic value of matures and immatures at the next time step is given by (\citealt{barfield_evolution_2011} Eq.5, applied to the current models) :
+Assuming the phenotype has a Gaussian distribution,  the mean genotypic value of matures and immatures at the next time step is given by (\citealt{barfield_evolution_2011} Eq.5, applied to the current models):
 
 \begin{subequations}
 	\begin{align}
@@ -74,7 +69,7 @@ Assuming the phenotype has a Gaussian distribution,  the mean genotypic value of
 		\overline{g_{I}}' &= (c_{I M} \overline{g_{M}} + c_{I I} \overline{g_{I}}) + 
 			(c_{I M} G_M \beta_{a_{IM}} + c_{I I} G_I \beta_{a_{II}}) \\
 		\overline{g_{M}}' &=	 (c_{M I} \overline{g_{I}} + c_{M M} \overline{g_{M}})  +
-				(c_{M I} G_I \beta_{a_{MI}} + c_{M M} G_M \beta_{a_{MM}})
+				(c_{M I} G_I \beta_{a_{MI}} + c_{M M} G_M \beta_{a_{MM}}),
 	\end{align}
 \end{subequations}
 
@@ -89,7 +84,7 @@ To have the formal expressions of $\beta_{a_{ij}}$ we need to compute the select
 	\begin{aligned}
 	\beta_{\overline{s_I}} &= \frac{\partial \ln \overline{s_I}}{\partial \overline{z_I}} &= \frac{\theta_s - \overline{z_I}}{\omega_s + P_I} \\
 	\beta_{\overline{f_1}} &= \frac{\partial \ln \overline{f_1}}{\partial \overline{z_I}} &= \frac{\theta_f - \overline{z_I}}{\omega_f + P_I} \\
-	\beta_{\overline{f_2}} &= \frac{\partial \ln \overline{f_2}}{\partial \overline{z_M}} &= \frac{\theta_f - \overline{z_M}}{\omega_f + P_M}
+	\beta_{\overline{f_2}} &= \frac{\partial \ln \overline{f_2}}{\partial \overline{z_M}} &= \frac{\theta_f - \overline{z_M}}{\omega_f + P_M}.
 	\end{aligned}
 \end{equation}
 
@@ -97,7 +92,7 @@ Because we have for example $\overline{a_{II}} = s_0 m \overline{f_1} + \overlin
 
 \begin{equation}
 	\label{eq:selgradaII}
-	\beta_{a_{II}} = \frac{s_0 m \overline{f_1} \beta_{\overline{f_1}} + \overline{s_I} \beta_{\overline{s_I}} (1-m)}{\overline{a_{II}}}
+	\beta_{a_{II}} = \frac{s_0 m \overline{f_1} \beta_{\overline{f_1}} + \overline{s_I} \beta_{\overline{s_I}} (1-m)}{\overline{a_{II}}}.
 \end{equation}
 
 We have a similar recursion for phenotypes \citep{barfield_evolution_2011}. We need to distinguish direct transitions of individuals from one stage to the other $\overline{t_{ij}}$ and events leading to new individuals $\overline{f_{ij}}$ (note $\overline{a_{ij}} = \overline{t_{ij}} + \overline{f_{ij}}$), because in the first case the phenotype remain unchanged while in the second only the genoytpe is inherited:
@@ -106,11 +101,10 @@ We have a similar recursion for phenotypes \citep{barfield_evolution_2011}. We n
 	\begin{align}
 	\label{eq:phenotypic}
 	\overline{z_I'} &= c_{II}^t (\overline{z_I} + P_I \beta_{t_{II}}) + c_{II}^f (\overline{g_I} + G_I \beta_{f_{II}}) + c_{IM}^f (\overline{g_M} + G_M \beta_{f_{IM}}) \\
-	\overline{z_M'} &= c_{MI}^t (\overline{z_I} + P_I + \beta_{t_{MI}}) + c_{MM}^t (\overline{z_M} + P_M + \beta_{t_{MM}})
+	\overline{z_M'} &= c_{MI}^t (\overline{z_I} + P_I \beta_{t_{MI}}) + c_{MM}^t (\overline{z_M} + P_M \beta_{t_{MM}}),
 	\end{align}
 \end{subequations}
-
-, with $\beta_{t_{ij}}$ the gradient of selection defined as above in \autoref{eq:genotypic}, i.e. $\beta_{t_{ij}} = \frac{\partial \ln \overline{t_{ij}}}{\partial \overline{z}}$; $c_{ij}^t = \frac{n_j \overline{t_{ij}}}{n_i'}$ the contribution by direct transition of stage $j$ to stage $i$ and $c_{ij}^f = \frac{n_j \overline{f_{ij}}}{n_i'}$ the contribution by birth.
+with $\beta_{t_{ij}}$ the gradient of selection defined as above in \autoref{eq:genotypic}, i.e. $\beta_{t_{ij}} = \frac{\partial \ln \overline{t_{ij}}}{\partial \overline{z}}$; $c_{ij}^t = \frac{n_j \overline{t_{ij}}}{n_i'}$ the contribution by direct transition of stage $j$ to stage $i$ and $c_{ij}^f = \frac{n_j \overline{f_{ij}}}{n_i'}$ the contribution by birth.
 
 \subsection*{Approximation under weak selection}
 
@@ -118,33 +112,33 @@ Under weak selection, the mean phenotype at equilibrium in the population $\over
 
 \begin{equation}
 	\label{eq:zweak}
-	\overline{z_{eq}} = \frac{\gamma_{f}\theta_{f} + \gamma_{s}\theta_{s}}{\gamma_{f} + \gamma_{s}}
+	\overline{z_{eq}} = \frac{\gamma_{f}\theta_{f} + \gamma_{s}\theta_{s}}{\gamma_{f} + \gamma_{s}},
 \end{equation}
-, with,
+with,
 \begin{subequations}
 	\begin{equation}
 	\label{eq:gammaf}
-	\gamma_{f} = \frac{v_{I} u_{I} s_{0} m \overline{f_{1}} }{\lambda(P_{I}+\omega_{f})} + \frac{ v_{I} u_{M} \frac{G_{M}}{G_{I}} s_{0} \overline{f_{2}}}{\lambda ( P_{M} + \omega_{f} )}
+	\gamma_{f} = \frac{v_{I} u_{I} s_{0} m \overline{f_{1}} }{\lambda(P_{I}+\omega_{f})} + \frac{ v_{I} u_{M} \frac{G_{M}}{G_{I}} s_{0} \overline{f_{2}}}{\lambda ( P_{M} + \omega_{f} )},
 	\end{equation}
 	and
 	\begin{equation}
 	\label{eq:gammas}
-	\gamma_{s} = \frac{ v_{I} u_{I} \overline{s_{I}} (1-m) }{\lambda(P_{I}+\omega_{s})}
+	\gamma_{s} = \frac{ v_{I} u_{I} \overline{s_{I}} (1-m) }{\lambda(P_{I}+\omega_{s})}.
 	\end{equation}
 \end{subequations}
 
 $\gamma_f$ and $\gamma_s$ represent the respective weight of each of the optimum in the trade-off between $\theta_f$ and $\theta_s$ for $\overline{z_{eq}}$. Indeed, if $\theta_f = \theta_s$ then $\overline{z_{eq}} = \theta_f = \theta_s$. But if $\theta_f \neq \theta_s$, then the position of the mean phenotype depends on $\gamma_f$ and $\gamma_s$.
 
-\subsection*{Fluctuating optimums}
+\subsection*{Fluctuating optima}
 
 I introduced environmental fluctuations in the model through the optima:
 \begin{equation}
 \left\{
 	\begin{aligned}
-		\theta_f(t) &= \overline{\theta_f} + \alpha_f \xi_f \\
-		\theta_s(t) &= \overline{\theta_s} + \alpha_s \xi_s
+		\theta_f(t) &= \overline{\theta_f} + \alpha_f \xi_f(t) \\
+		\theta_s(t) &= \overline{\theta_s} + \alpha_s \xi_s(t)
 	\end{aligned}
-\right.
+\right.,
 \end{equation}
 
 $\alpha_i$ is the sensitivity of $\theta_i$ to noise $\xi_i$. $\xi_f$ and $\xi_s$ are noise vectors drawn at each time step from a bi-variate normal distribution with respectively $\sigma_f^2$ and $\sigma_s^2$ variances and correlation $\rho_N$.
@@ -153,18 +147,18 @@ Under varying environment we get an another approximation under weak selection f
 
 \begin{equation}
 	\label{eq:zfluct}
-	\Delta \overline{z}(t) = - G_I \gamma (\overline{z}(t) - \theta_v(t))
+	\Delta \overline{z}(t) = - G_I \gamma (\overline{z}(t) - \theta_v(t)),
 \end{equation}
-, with
+with
 \begin{subequations}
 	\begin{align}
-		\gamma &= \gamma_f + \gamma_s \\
-		\theta_v(t) &= \overline{z_{eq}} + \xi_v \\
-		\xi_v &= \frac{\alpha_f \xi_f + \alpha_s \xi_s}{\alpha_f + \alpha_s}
+		\gamma &= \gamma_f + \gamma_s, \\
+		\theta_v(t) &= \overline{z_{eq}} + \xi_v(t), \\
+		\xi_v(t) &= \frac{\alpha_f \xi_f(t) + \alpha_s \xi_s(t)}{\alpha_f + \alpha_s}.
 	\end{align}
 \end{subequations}
 
-We see that the change in the mean phenotype depends on the sensitivity of the optima $\alpha_i$ as well as on the magnitude of the variations.
+We see that the change in the mean phenotype depends on the sensitivity to noise of the optima $\alpha_i$ as well as on the magnitude of the variations.
 
 \subsection*{Trend in change}
 
@@ -175,35 +169,34 @@ To model climate-change, and especially the trend of increasing temperature with
 	\left\{
 	\begin{aligned}
 		\theta_i(t) &= \overline{\theta_i} + \alpha_i\epsilon(t) \\
-		\epsilon(t) &= kt + \xi_i
+		\epsilon(t) &= kt + \xi_i(t)
 	\end{aligned}
-	\right.
+	\right..
 \end{equation}
 
 With $k$ having a negative value, the optima tend to decrease with time.
 
-\subsection*{\textsc{PHENOFIT} data}
+\subsection*{\textsc{PHENOFIT} simulations}
 
 \textsc{PHENOFIT} is a phenology model including several sub-models, from environmental and phenological data it simulates the survival and reproduction of an average tree to predict its range~\citep{morin_tree_2008}.
 
- We used output from \textsc{PHENOFIT} (simulations performed by A. Duputié) from 1950 to 2100 for the sessile oak (\textit{Quercus petraea}) about predicted bud burst date and predicted fitnesses in 6 localities (see \autoref{fig:thetaf}). We had fitness and fecundity predictions for phenotypes around the modeled date (a range of 21 days). From these data we predicted the optima fluctuations. Considering fecundity $f$ as a Gaussian function around this date with the same form as $f_1$ in \autoref{eq:poplht}:
+ We used output from \textsc{PHENOFIT} (simulations performed by A. Duputié) from 1950 to 2100 for the sessile oak (\textit{Quercus petraea}) namely predicted bud burst date and predicted fecundities in 6 localities (see \autoref{fig:thetaf}). We had fecundity predictions for phenotypes around the modeled date (a range of 21 days). From these data we predicted the optima fluctuations. Considering fecundity $f$ as a Gaussian function around this date with the same form as $f_1$ in \autoref{eq:poplht}:
 
 \begin{equation}
 	\label{eq:beta1}
-	\beta = \frac{\partial \ln f}{\partial \overline{z}} = \frac{\theta_f - \overline{z}}{\omega_f + \sigma_z^2}
+	\beta = \frac{\partial \ln f}{\partial \overline{f}} = \frac{\theta_f - \overline{z}}{\omega_f + \sigma_z^2},
 \end{equation}
-
-Using \citep{lande_measurement_1983}, with $z$ Gaussian, $p(z)$ the distribution of $z$ in the population, $f(z)$ the fitness associated with $z$ and $\overline{f}$ the mean fitness in the population, we computed selection gradients from PHENOFIT simulation outputs as:
+using \citep{lande_measurement_1983}, with $z$ Gaussian, $p(z)$ the distribution of $z$ in the population, $f(z)$ the fitness associated with $z$ and $\overline{f}$ the mean fitness in the population, we computed selection gradients from PHENOFIT simulation outputs as:
 
 \begin{equation}
 	\label{eq:beta2}
-	\beta = \frac{\text{cov}(z, \frac{f(z)}{\overline{z}})}{\sigma_z^2}
+	\beta = \frac{\text{cov}(z, \frac{f(z)}{\overline{f}})}{\sigma_z^2}.
 \end{equation}
 
 From \eqref{eq:beta1} and \eqref{eq:beta2} we can express $\theta_f$:
 
 \begin{equation}
-	\theta_f = \frac{\text{cov}(z, \frac{f(z)}{\overline{z}})}{\sigma_z^2} (\omega_f + \sigma_z^2) + \overline{z}
+	\theta_f = \frac{\text{cov}(z, \frac{f(z)}{\overline{f}})}{\sigma_z^2} (\omega_f + \sigma_z^2) + \overline{z}.
 \end{equation}
 
 In our estimations we considered $p(z)$ to be Gaussian around the modeled date by \textsc{PHENOFIT}, with a variance of $P_I=40$ as in our analytic model. We normalized this distribution so that all dates in the population would be in the 42 days interval around the modeled date.
