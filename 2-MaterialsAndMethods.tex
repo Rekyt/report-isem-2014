@@ -3,7 +3,7 @@
 
 \subsection*{Population model}
 
-We used a previously developed model with stage-structure \citetext{Sandell 2014, master's thesis}. We considered a population of trees split in two classes, immature (I) and mature (M). Only mature individuals reproduce. Each year, an immature individual can survive with a probability $s_I$, mature and reproduce with a probability of $m$. At the same time, a mature individual has a probability $s_M$ to survive. First-time reproducers, i.e. immature that became mature and reproduce the same year, have a fecundity of $f_1$, while experienced reproducers, those who already reproduced at least once, have a fecundity of $f_2$. Produced seeds have a probability $s_0$ to survive and join the pool of immature trees. The standard parameters set is given in (\autoref{tab:params}). The population census is just before reproduction. The population dynamics can be predicted using the following matrix \citep{caswell_matrix_2001}:
+We used a previously developed model with stage-structure \citetext{Sandell 2014, master's thesis}. We considered a population of trees split in two classes, immature (I) and mature (M). Only mature individuals reproduce. Each year, an immature individual survive with a probability $s_I$, mature and reproduce with a probability $m$. A mature individual has a probability $s_M$ to survive. First-time reproducers have a fecundity $f_1$, while experienced reproducers have a fecundity $f_2$. Produced seeds have a probability $s_0$ to survive and join the pool of immature trees. The standard parameters set is given in (\autoref{tab:params}). The population dynamics can be predicted using the following matrix \citep{caswell_matrix_2001}:
 \begin{equation}
 	\label{eq:popmat}
 	A =
@@ -17,9 +17,9 @@ We used a previously developed model with stage-structure \citetext{Sandell 2014
 	s_{M} m & s_{M}
 	\end{pmatrix},
 \end{equation}
-where $a_{ij}$, the transition rate, describes the contribution of stage $j$ individuals to stage $i$ the next year. With given initial conditions we can compute the number of individuals in the two stages by iterating matrix multiplication by $A$.
+where $a_{ij}$ describes the contribution of stage $j$ individuals to stage $i$ the next year. With given initial conditions, we compute the number of individuals in the two stages by iterating matrix multiplication by $A$.
 
-I implemented density-dependence in this model, so that the population would not continuously increase (see \autoref{fig:dd}). I assumed seed germination and survival parameter $s_{0}$ declined with increasing density of mature and immature competitors using a Beverton-Holt function \citep{caswell_matrix_2001}:
+I implemented density-dependence in this model, so that the population would not continuously increase (see \autoref{fig:dd}). I assumed that the seed germination and survival parameter $s_{0}$ declined with increasing density of mature and immature competitors using a Beverton-Holt function \citep{caswell_matrix_2001}:
 \begin{equation}
 	\label{eq:ddfunc}
 	s_{0} = \frac{s_{0, max}}{1 + k_{I} N_{I} + k_{M} N_{M}},
@@ -30,7 +30,7 @@ with $k_{I}$ and $k_{M}$ the weights of immature ($N_{I}$) and mature ($N_{M}$) 
 
 We model the evolution of a phenotypic trait, e.g. the date at which first leafs appear on a tree, $z$ the bud-burst date. In our model, an individual is born with a given phenotype and keeps it throughout its life.
 
-Too early bud-burst can compromize the survival of young immature trees and the fecundity of mature trees because of the risk of frost. Too late bud-burst also affects the same traits because the bad season arrives before enough photosynthetates have been accumulated to guarantee survival of young trees and maturation of fruits. We assume that the survival of large mature trees is less sensitive to variation of phenology. We therefore supposed that for each individual - $s_{I}$ immature survival, $f_1$ first reproducers fecundity and $f_2$ experienced reproducers - (see \autoref{eq:popmat}) to be Gaussian function of phenotype $z$. Thus, bud-burst date directly influence their values. They are expressed as follow:
+Too early bud-burst can compromize the survival of young immature trees and the fecundity of mature trees because of the risk of frost. Too late bud-burst also affects the same traits because the bad season arrives before enough photosynthetates have accumulated to guarantee survival of young trees and maturation of fruits. We assume that the survival of large mature trees is less sensitive to variation of phenology. We therefore supposed that for each individual - $s_{I}$ immature survival, $f_1$ first reproducers and $f_2$ experienced reproducers fecundities (see \autoref{eq:popmat}) to be Gaussian function of phenotype $z$. Thus, bud-burst date directly influences their values. They are expressed as follows:
 
 \begin{equation}
 	\label{eq:indlht}
@@ -42,11 +42,11 @@ Too early bud-burst can compromize the survival of young immature trees and the 
 	\end{aligned}
 	\right.,
 \end{equation}
-$\theta_s$ is the optimal bud-burst date for survival, i.e. phenotype where $s_I$ is at its maximum $s_I(\theta_s)$; $\omega_s$ is the width of the Gaussian function, its inversely related to selection intensity: with small $\omega_s$ values, only a restricted range of bud-burst dates would have important survival rates. $f_1$ and $f_2$ have similar expressions, but the optimal bud-burst date $\theta_f$ is different from $\theta_s$, $f_1$ and $f_2$ only differ by their maximum values $f_i(\theta_f)$, with $f_1$ lower than $f_2$ (see \autoref{tab:params} to have standard parameters values).
+$\theta_s$ is the optimal bud-burst date for survival, i.e. phenotype where $s_I$ is at its maximum $s_I(\theta_s)$; $\omega_s$ is the width of the Gaussian function, which is inversely related to selection intensity: with small $\omega_s$ values, only a restricted range of bud-burst dates would have important survival rates (see \autoref{tab:params} with standard parameters values).
 
-The optimal trait values $\theta_s$ and $\theta_f$ can differ between stages and life-history components, but trait value does not change along the life of an individual, then there is a trade-off between the two fitness components fecundity and immature survival. The evolution of the trait then affects the population dynamics through the life-history of the individuals in the population.
+The optimal trait values $\theta_s$ and $\theta_f$ can differ between stages and life-history components, but trait value does not change along the life of an individual, then there is a trade-off between fecundity and immature survival. The evolution of the trait affects the population dynamics through the life-history of the individuals in the population.
 
-If we want to compute mean transition rate $\overline{a_{ij}}$, we need to average $s_I$, $f_1$ and $f_2$ (ex: $\overline{a_{IM}} = s_0 \overline{f_2}$):
+If we want to compute the mean transition rate $\overline{a_{ij}}$, we need to average $s_I$, $f_1$ and $f_2$ (ex: $\overline{a_{IM}} = s_0 \overline{f_2}$):
 
 \begin{equation}
 	\mathrm{E}[s_I] = \overline{s_I} = \int p_I(z)s_I(z)\,\text{d}z,
