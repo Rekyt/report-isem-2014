@@ -30,7 +30,7 @@ with $k_{I}$ and $k_{M}$ the weights of immature ($N_{I}$) and mature ($N_{M}$) 
 
 We model the evolution of a phenotypic trait, e.g. the date at which first leafs appear on a tree, $z$ the bud-burst date. In our model, an individual is born with a given phenotype and keeps it throughout its life.
 
-Too early bud-burst can compromize the survival of young immature trees and the fecundity of mature trees because of the risk of frost. Too late bud-burst also affects the same traits because the bad season arrives before enough photosynthetates have accumulated to guarantee survival of young trees and maturation of fruits. We assume that the survival of large mature trees is less sensitive to variation of phenology. We therefore supposed that for each individual - $s_{I}$ immature survival, $f_1$ first reproducers and $f_2$ experienced reproducers fecundities (see \autoref{eq:popmat}) to be Gaussian function of phenotype $z$. Thus, bud-burst date directly influences their values. They are expressed as follows:
+Too early bud-burst can compromise the survival of young immature trees and the fecundity of mature trees because of the risk of frost. Too late bud-burst also affects the same traits because the bad season arrives before enough photosynthetates have accumulated to guarantee survival of young trees and maturation of fruits. We assume that the survival of large mature trees is less sensitive to variation of phenology. We therefore supposed that for each individual - $s_{I}$ immature survival, $f_1$ first reproducers and $f_2$ experienced reproducers fecundities (see \autoref{eq:popmat}) to be Gaussian function of phenotype $z$. Thus, bud-burst date directly influences their values. They are expressed as follows:
 
 \begin{equation}
 	\label{eq:indlht}
@@ -61,7 +61,7 @@ we obtain similar expressions for $\overline{f_1}$ and $\overline{f_2}$.
 
 \subsection*{Iterations at each time step}
 
-Assuming the phenotype has a Gaussian distribution,  the mean genotypic value of matures and immatures at the next time step is given by (\citealt{barfield_evolution_2011} Eq.5, applied to the current models):
+Assuming the phenotype has a Gaussian distribution,  the mean genotypic value of matures and immature at the next time step is given by (\citealt{barfield_evolution_2011} Eq.5, applied to the current models):
 
 \begin{subequations}
 	\begin{align}
@@ -95,7 +95,7 @@ Because we have for example $\overline{a_{II}} = s_0 m \overline{f_1} + \overlin
 	\beta_{a_{II}} = \frac{s_0 m \overline{f_1} \beta_{\overline{f_1}} + \overline{s_I} \beta_{\overline{s_I}} (1-m)}{\overline{a_{II}}}.
 \end{equation}
 
-We have a similar recursion for phenotypes \citep{barfield_evolution_2011}. We need to distinguish direct transitions of individuals from one stage to the other $\overline{t_{ij}}$ and events leading to new individuals $\overline{f_{ij}}$ (note $\overline{a_{ij}} = \overline{t_{ij}} + \overline{f_{ij}}$), because in the first case the phenotype remain unchanged while in the second only the genoytpe is inherited:
+We have a similar recursion for phenotypes \citep{barfield_evolution_2011}. We need to distinguish direct transitions of individuals from one stage to the other $\overline{t_{ij}}$ and events leading to new individuals $\overline{f_{ij}}$ (note $\overline{a_{ij}} = \overline{t_{ij}} + \overline{f_{ij}}$), because in the first case the phenotype remain unchanged while in the second only the genotype is inherited:
 
 \begin{subequations}
 	\begin{align}
@@ -222,9 +222,9 @@ The regular noise and the trend were estimated excluding those catastrophic even
 		Fecundity function width & $\omega_{f}$ & 400 \\
 		Survival function width & $\omega_{s}$ & 400 \\
 		Heritability & $h^2$ & 0.5 \\
-		Phenotypic variance of immatures & $P_{I}$ & 40 \\
+		Phenotypic variance of immature & $P_{I}$ & 40 \\
 		Phenotypic variance of matures & $P_{M}$ & 40 \\
-		Genotypic variance of immatures & $G_{I} = P_{I} \times h^2$ & 20 \\
+		Genotypic variance of immature & $G_{I} = P_{I} \times h^2$ & 20 \\
 		Genotypic variance of matures & $G_{M}$ & 20 \\
 		Survival of immature at phenotypic optimum & $\overline{s_{I}}(\overline{z} = \theta_{s})$ & 0.8 \\
 		Fecundity of first time reproducers at optimum & $\overline{f_{1}}(\overline{z} = \theta_{f})$ & 100 \\
@@ -234,7 +234,7 @@ The regular noise and the trend were estimated excluding those catastrophic even
 		Survival of mature stage & $s_{M}$ & 0.99 \\
 		\multicolumn{3}{l}{\textbf{Density-dependence}} \\
 		Maximum $s_{0}$ in density-dependence function & $s_{0, max}$ & 0.12 \\
-		Decreasing factor due to immatures & $k_{I}$ & 0.001 \\
+		Decreasing factor due to immature & $k_{I}$ & 0.001 \\
 		Decreasing factor due to matures & $k_{M}$ & 0.005 \\
 		\multicolumn{3}{l}{\textbf{Fluctuations}} \\
 		Sensitivity of optimum for fecundity to fluctuation & $\alpha_{f}$ & 5 \\

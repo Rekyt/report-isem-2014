@@ -3,12 +3,9 @@
 
 We modeled a stage-structured tree population using a quantitative genetics approach, with bud-burst date varying between two optima. We predicted phenotype evolution in the next 150 years. Using \textsc{PHENOFIT} simulation results we computed values for one of the optima. According to simulations, an increasing number of extreme events will happen in the next century where all fecundities will be equal to zero.
 
-As expected in the literature, we found a decreasing trend in the variation of optima, i.e. a trend to precocity of phenology \citep{aitken_adaptation_2008, ehrlen_timing_2009}. Because of the general increase in temperature, organisms advance their phenology to track their original environment, either by genetic change or plasticity~(\citealt{savolainen_genetic_2004}, reviewed in \citealt{merila_climate_2014}).
-
-Increasing evidences underline the role of plasticity in adaptation to changes.
+As expected in the literature, we found a decreasing trend in the variation of optima, i.e. a trend to precocity of phenology \citep{aitken_adaptation_2008, ehrlen_timing_2009}. Because of the general increase in temperature, organisms advance their phenology to track their original environment, either by genetic change or plasticity~(\citealt{savolainen_genetic_2004}, reviewed in \citealt{merila_climate_2014}). Increasing evidences underline the role of plasticity for trees in adaptation to environmental change, we did not consider it in our model to focus on the specific effects of fluctuations; Phenotypic plasticity should also be taken into account in a future model as it slows down genetic adaption~\citep{alberto_potential_2013, aitken_adaptation_2008}. 
 
 Genotypic ($\overline{g_i}$) and phenotypic ($\overline{z_i}$) values are different in our simulations (see~\autoref{fig:dd}); because of both stage-structure and the two optima we use.
-
 
 With trend (\autoref{fig:trend}), counter-intuitively, there is no difference of in adaptation speed with and without fluctuations. We could have expected an additional cost of fluctuations: if the population would have tracked fluctuations closely, then a increased noise variance would have decrease fitness dramatically. Since it is not the case for reasons cited above, we see no cost of fluctuations when there is a general trend in the environment.
 
@@ -18,4 +15,6 @@ Our model was parametrized according to the sessile oak life-cycle (\textit{Quer
 
 Those estimations and fluctuations do not include the extreme years when all fecundities are equal to zero, i.e. the selection gradient is zero, which should affect adaptation dynamics. Modeling correctly the variations of optima values would lead to more realistic behavior, it could be done by drawing the optima from an almost Gaussian distribution with a very long tail towards negative values.
 
-Phenotypic plasticity should also be taken into account in a future model as it slows down genetic adaption. It has been shown to be an important component of adaptation to environmental changes~\citep{aitken_adaptation_2008}.
+Quantitative genetics models have been developed to predict populations' adaptation dynamics, studied traits are often modeled as follow: in a given environment there is an optimal trait value, population then converge to this value to maximize fitness if achievable~\citep{lande_quantitative_1982}. Taking into account the different responses to environmental changes in various stages, more stages with also different optima could contribute in the general phenotypic equilibrium.
+
+Those optima are of abstract nature, they are difficult to measure directly in natural populations; to overcome this difficulty, it was suggested to measure selection gradient to have access to fitness landscapes and extrapolate optima~\citep{lynch_evolution_1993}. In the wild, a whole population do not share the same bud-burst date, there exists a range of possible dates that all maximize fitness in the same way (any good refs on this?). Including such optimal ranges could be one step towards more realistic quantitative genetics models.
