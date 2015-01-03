@@ -51,7 +51,7 @@ If we want to compute the mean transition rate $\overline{a_{ij}}$, we need to a
 \begin{equation}
 	\mathrm{E}[s_I] = \overline{s_I} = \int p_I(z)s_I(z)\,\text{d}z,
 \end{equation}
-with $p_I(z)$ the distribution of $z$ in the immature stage. We suppose $p_I$ has a Gaussian distribution with mean $\overline{z_I}$ and width $P_I$ the phenotypic variance in the immature stage~\citep{lande_quantitative_1982}. We end with the following expression for $\overline{s_I}$:
+with $p_I(z)$ the distribution of $z$ in the immature stage. We suppose $p_I$ is a Gaussian distribution with mean $\overline{z_I}$ and width $P_I$ the phenotypic variance in the immature stage~\citep{lande_quantitative_1982}. We end with the following expression for $\overline{s_I}$:
 
 \begin{equation}
 	\label{eq:poplht}
@@ -178,9 +178,9 @@ With $k$ having a negative value, the optima tend to decrease with time.
 
 \subsection*{\textsc{PHENOFIT} simulations}
 
-\textsc{PHENOFIT} is a phenology model including several sub-models, from environmental and phenological data it simulates the survival and reproduction of an average tree to predict its range~\citep{morin_tree_2008}.
+\textsc{PHENOFIT} is a phenology model including several sub-models; from environmental and phenological data it simulates the survival and reproduction of an average tree to predict its range~\citep{morin_tree_2008}.
 
- We used output from \textsc{PHENOFIT} (simulations performed by A. Duputié) from 1950 to 2100 for the sessile oak (\textit{Quercus petraea}) namely predicted bud burst date and predicted fecundities in 6 localities (see \autoref{fig:thetaf}). We had fecundity predictions for phenotypes around the modeled date (a range of 21 days). From these data we predicted the optima fluctuations. Considering fecundity $f$ as a Gaussian function around this date with the same form as $f_1$ in \autoref{eq:poplht}:
+ We used output from \textsc{PHENOFIT} (simulations performed by A. Duputié) from 1950 to 2100 for the sessile oak (\textit{Quercus petraea}), namely predicted bud burst date and predicted fecundities in 6 localities (see \autoref{fig:thetaf}). We had fecundity predictions for phenotypes around the modeled date (a range of 42 days). From these data we predicted the optima fluctuations. Considering fecundity $f$ as a Gaussian function around this date with the same form as $f_1$ in \autoref{eq:poplht}:
 
 \begin{equation}
 	\label{eq:beta1}
@@ -207,7 +207,7 @@ All statistical analyses were made using R~\citep{R_2014}, graphics were drawn u
 
 To estimate the trend of the $\theta_f$ variations, we considered a trend model with three components: a general decreasing linear trend, a white noise component with a constant variance and a more dramatic noise leading to "catastrophic" events, with low $\theta_f$ values.
 
-The regular noise and the trend were estimated excluding those catastrophic events, we kept only value of $\theta_f$ over 60, which is the lower bound of the realizable range of bud burst date of oak trees. Then we performed a linear regression between values of $\theta_f$ and time, giving us an estimation of $k$ from \autoref{eq:kt}. Analyzing the residuals gives us the variance of $\alpha_f \xi_f$ from the same equation.
+The regular noise and the trend were estimated excluding those catastrophic events, we kept only value of $\theta_f$ over 60, which is the lower bound of the observed range of bud burst date of oak trees. Then we performed a linear regression between values of $\theta_f$ and time, giving us an estimation of $k$ from \autoref{eq:kt}. Analyzing the residuals gives us the variance of $\alpha_f \xi_f$ from the same equation.
 
 \begin{table}
 \begin{center}
