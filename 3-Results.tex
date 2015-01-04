@@ -6,11 +6,11 @@
 \begin{figure}[ht!]
 	\centering
 	\includegraphics[scale=1]{Figures/DDphenopop.pdf}
-	\caption{\textbf{Effect of density-dependence on phenotypes and populations}. \textbf{Top:} Phenotype variations in population ($\overline{z_I}, \overline{z_M}$, starting from $z = 116$) with their corresponding genotypic values ($\overline{g_I}, \overline{g_M}$, with $g_i(0) = 116$), and the approximation given by \autoref{eq:zweak}; \textbf{Bottom:} Population, number of immature individuals ($N_I$, red), number of mature individuals ($N_M$, blue). Starting from the density-dependent Stable-Stage Distribution (SSD) in constant environment. \textbf{No DD} means we used the model without density-dependence, \textbf{DD} means we implemented density-dependence through $s_0$ (see \autoref{eq:ddfunc}). Here, bud-burst date is expressed in julian days (numbered days in the year, 1st of January being 1 in julian days).}
+	\caption{\textbf{Effect of density-dependence on phenotypes and populations.} \textbf{No DD} means we used the model without density-dependence, \textbf{DD} means we implemented density-dependence through $s_0$ (see \autoref{eq:ddfunc}). Here, bud-burst date is expressed in julian days (numbered days in the year, 1st of January being 1 in julian days). \textbf{Top:} Phenotype variations in population ($\overline{z_I}, \overline{z_M}$, starting from $z = 116$) with their corresponding genotypic values ($\overline{g_I}, \overline{g_M}$, with $g_i(0) = 116$), and the approximation given by \autoref{eq:zweak}; \textbf{Bottom:} Population, number of immature individuals ($N_I$, red), number of mature individuals ($N_M$, blue). Starting from the density-dependent Stable-Stage Distribution (SSD) in constant environment.}
 	\label{fig:dd}
 \end{figure}
 
-We used the previously developed model in \citetext{Sandell 2014} and simulated (see~\autoref{fig:dd}) a tree population for 150 years in a constant environment, with and without density-dependence on $s_0$, to assess the effects of a more realistic demography.
+We used the previously developed model in \citetext{Sandell 2014, master's thesis} and simulated (see~\autoref{fig:dd}) a tree population for 150 years in a constant environment, with and without density-dependence on $s_0$, to assess the effects of a more realistic demography.
 
 As expected, density-dependence allows regulating the population (\autoref{fig:dd} right panel), as the number of mature and immature individuals seem to converge respectively to $18000$ and $10000$ individuals, while without density-dependence the population is exponentially growing.
 
@@ -25,7 +25,7 @@ The mean immature phenotype $\overline{z_I}$ converge quicker than the mean matu
 \begin{figure}[ht!]
 	\centering
 	\includegraphics[scale=1]{Figures/PhenoLHTwithCorr.pdf}
-	\caption{\textbf{Fluctuating optima against constant environment}. \textbf{A:} comparison of phenotypes from simulations with constant or fluctuating optima, $\overline{z_{eq}}$ is the approximation shown in \autoref{eq:zweak}; results from single simulation. \textbf{B:} life-history traits in constant or fluctuating environment. \textbf{C:} population in constant or fluctuating environment, $N_I$ is the number of immature individuals and $N_M$ the number of mature individuals, population started from the stable stage distribution. \textbf{Solid lines:} values in constant environment, \textbf{Dashed lines:} in fluctuating environment, results were averaged over 100 independent simulations. \textbf{Gray envelope}: 95\% confidence interval of average.}
+	\caption{\textbf{Fluctuating optima against constant environment.} \textbf{Solid lines:} values in constant environment, \textbf{Dashed lines:} in fluctuating environment, results were averaged over 100 independent simulations. \textbf{Gray envelope}: 95\% confidence interval of average. \textbf{A:} comparison of phenotypes from simulations with constant or fluctuating optima, $\overline{z_{eq}}$ is the approximation shown in \autoref{eq:zweak}; results from single simulation. \textbf{B:} life-history traits in constant or fluctuating environment. \textbf{C:} population in constant or fluctuating environment, $N_I$ is the number of immature individuals and $N_M$ the number of mature individuals, population started from the stable stage distribution.}
 	\label{fig:corr}
 \end{figure}
 
@@ -48,7 +48,7 @@ As we had partially correlated noises in our population (see \autoref{tab:params
 \begin{figure}[ht!]
 	\centering
 	\includegraphics[scale=1]{Figures/Trend.pdf}
-	\caption{\textbf{Mixed influences of trend and fluctuations on the population}. \textbf{A:} Phenotype evolution with and without fluctuations, results from a \textbf{single} simulation; \textbf{B:} (\textbf{Left}) life-history traits evolution; \textbf{C:} demography. \textbf{Solid lines:} (\textbf{No fluct.}) linearly decreasing optima with time; \textbf{Dashed lines:} (\textbf{With fluct.}) fluctuating decreasing optima, results were averaged over 100 independent simulations. \textbf{Gray envelope}: 95\% confidence interval of average.}
+	\caption{\textbf{Mixed influences of trend and fluctuations on the population.} \textbf{Solid lines:} (\textbf{No fluct.}) linearly decreasing optima with time; \textbf{Dashed lines:} (\textbf{With fluct.}) fluctuating decreasing optima, results were averaged over 100 independent simulations. \textbf{Gray envelope}: 95\% confidence interval of average. \textbf{A:} Phenotype evolution with and without fluctuations, results from a \textbf{single} simulation; \textbf{B:} (\textbf{Left}) life-history traits evolution; \textbf{C:} demography.}
 	\label{fig:trend}
 \end{figure}
 
@@ -58,7 +58,7 @@ The phenotype in the population decreases as the optima decrease, but much slowe
 
 The immature survival ($s_I$) has an interesting behavior, it first increases, reaches a maximum, then decreases. The decreasing trend in optima variation causes at first the mean population phenotype to move closer to $\theta_s$, thus maximizing $s_I$ values when it crosses $\theta_s$ line, as soon as it moves beyond $s_I$ starts to decrease again.
 
-On the contrary $f_1$ and $f_2$ the mean population phenotype go further away from $\theta_f$ with and without fluctuation.
+On the contrary first-time reproducers fecundity ($f_1$) and experienced reproducers fecundity ($f_2$) decrease with time, because the mean population phenotype go further away from $\theta_f$ with and without fluctuation.
 
 After a certain number of years, the population is lower in environments with trends than in constant ones, fluctuations worsen the demographic decline (\autoref{fig:trend}). 
 
